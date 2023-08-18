@@ -60,6 +60,9 @@ Future<void> startInitialize() async {
   await serviceLocatorStart();
   print('aloooo 2');
   await EasyLocalization.ensureInitialized();
+  print(Stripe.publishableKey =
+  dotenv.env[AppConstants.stripePublishableKey] as String);
+
   print('aloooo 3');
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   print('aloooo 4');
