@@ -9,7 +9,8 @@ import 'package:fashion_app/domain/entities/payment/payment_entity.dart';
 import 'package:fashion_app/domain/entities/product/product_entity.dart';
 
 import 'package:fashion_app/domain/entities/product/product_detail_entity.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 abstract class AuthRepository {
   Future<Either<Failure, User>> signUp(
@@ -18,7 +19,7 @@ abstract class AuthRepository {
   Future<Either<Failure, void>> resetPassword(String email);
   Future<Either<Failure, void>> signOutFirebase();
   Future<Either<Failure, User>> signInWithGoogle();
-  Future<Either<Failure, User>> signInWithFacebook();
+  // Future<Either<Failure, User>> signInWithFacebook();
   Future<Either<Failure, void>> updateEmail(String newEmail);
   Future<Either<Failure, void>> reAuthenticatesUser(
       String newEmail, String password);

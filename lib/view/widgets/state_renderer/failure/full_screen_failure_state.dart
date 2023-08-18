@@ -8,7 +8,6 @@ import 'package:fashion_app/view/widgets/common/text_utils.dart';
 class FullScreenFailureState extends StatelessWidget {
   const FullScreenFailureState(
       {super.key, required this.message, required this.press});
-
   final String message;
   final void Function() press;
   @override

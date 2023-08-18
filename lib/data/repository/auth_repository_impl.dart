@@ -3,12 +3,13 @@
 import 'dart:ffi';
 
 import 'package:dartz/dartz.dart';
-import 'package:fashion_app/core/errors/exceptions.dart';
+// import 'package:fashion_app/core/errors/exceptions.dart';
 import 'package:fashion_app/core/errors/failure.dart';
 import 'package:fashion_app/data/remote/auth/auth_service.dart';
 import 'package:fashion_app/domain/repository/repositories.dart'
     show AuthRepository;
-import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   final AuthService _authService;
@@ -58,20 +59,20 @@ class AuthRepositoryImpl implements AuthRepository {
     }
   }
 
-  @override
-  Future<Either<Failure, User>> signInWithFacebook() async {
-    try {
-      final user = await _authService.signInWithFacebook();
-      if (user != null) {
-        return Right(user);
-      }
-      return const Left(FirebaseFailure("Auth Failure"));
-    } on AuthException catch (e) {
-      return Left(FirebaseFailure(e.message));
-    } catch (e) {
-      return Left(FirebaseFailure(e.toString()));
-    }
-  }
+  // @override
+  // Future<Either<Failure, User>> signInWithFacebook() async {
+  //   try {
+  //     final user = await _authService.signInWithFacebook();
+  //     if (user != null) {
+  //       return Right(user);
+  //     }
+  //     return const Left(FirebaseFailure("Auth Failure"));
+  //   } on AuthException catch (e) {
+  //     return Left(FirebaseFailure(e.message));
+  //   } catch (e) {
+  //     return Left(FirebaseFailure(e.toString()));
+  //   }
+  // }
 
   @override
   Future<Either<Failure, User>> signInWithGoogle() async {

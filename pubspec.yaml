@@ -54,6 +54,9 @@ dependencies:
   firebase_storage: ^11.2.5
   flutter_dotenv: ^5.1.0
   flutter_rating_bar: ^4.0.1
+  supabase_flutter: ^1.10.13
+  flutter_appauth: ^6.0.2
+  crypto: ^3.0.3
   
   
 
@@ -74,12 +77,11 @@ flutter:
 
  
   assets:
-    - .env
     - assets/images/
     - assets/icons/
     - assets/jsons/
     - assets/translations/
-  #   - images/a_dot_ham.jpeg
+    - .env
 
 
 

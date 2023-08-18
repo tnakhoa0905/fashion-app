@@ -182,8 +182,8 @@ setupAuthUsecase() {
       () => SignUpUsecase(getIt<AuthRepository>()));
   getIt.registerLazySingleton<SignINWithGoogleUsecase>(
       () => SignINWithGoogleUsecase(getIt<AuthRepository>()));
-  getIt.registerLazySingleton<SignInWithFacebook>(
-      () => SignInWithFacebook(getIt<AuthRepository>()));
+  // getIt.registerLazySingleton<SignInWithFacebook>(
+  //     () => SignInWithFacebook(getIt<AuthRepository>()));
   getIt.registerLazySingleton<ResetPasswordUsecase>(
       () => ResetPasswordUsecase(getIt<AuthRepository>()));
   getIt.registerLazySingleton<SignoutUsecase>(
@@ -195,7 +195,7 @@ setupAuthUsecase() {
 
   getIt.registerLazySingleton<AuthUsecases>(() => AuthUsecases(
         loginUsecase: getIt(),
-        withFacebookUsecase: getIt(),
+        // withFacebookUsecase: getIt(),
         withGoogleUsecase: getIt(),
         signoutUsecase: getIt(),
         signUpUsecase: getIt(),

@@ -1,4 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,7 +17,11 @@ import 'package:fashion_app/domain/entities/account/user.dart';
 import 'package:fashion_app/domain/usecases/auth/auth_usecase.dart';
 import 'package:fashion_app/domain/usecases/base_usecase.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
+import 'dart:convert';
+import 'dart:io';
+import 'dart:math';
 
+import 'package:supabase_flutter/supabase_flutter.dart';
 part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
@@ -100,14 +104,14 @@ class AuthCubit extends Cubit<AuthState> {
 
   Future<void> signWithFacebook(BuildContext context) async {
     _loading();
-    (await _authUsecases.withFacebookUsecase.call(const NoParameters())).fold(
-      (failure) {
-        _failure(context, failure.message);
-      },
-      (user) {
-        _success(context, user);
-      },
-    );
+    // (await _authUsecases.withFacebookUsecase.call(const NoParameters())).fold(
+    //   (failure) {
+    //     _failure(context, failure.message);
+    //   },
+    //   (user) {
+    //     _success(context, user);
+    //   },
+    // );
   }
 
   Future<void> signWithGoogle(BuildContext context) async {
@@ -155,9 +159,10 @@ class AuthCubit extends Cubit<AuthState> {
     if (_user != null) {
       final userModel = UserModel(
         uid: _prefs.userUid ?? "",
-        username: _user!.displayName ?? usernameController.text,
+        username: _user!.userMetadata?['full_name'] ?? usernameController.text,
         email: _user!.email ?? emailController.text,
-        profilePhoto: _user!.photoURL ?? AppConstants.profilePicturePlaceholder,
+        profilePhoto: _user!.userMetadata?['avatar_url'] ??
+            AppConstants.profilePicturePlaceholder,
       );
 
       BlocProvider.of<UserCubit>(context)
@@ -210,7 +215,7 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   void _success(BuildContext context, User user) async {
-    await _prefs.saveUserUid(user.uid);
+    await _prefs.saveUserUid(user.id);
     _user = user;
     // ignore: use_build_context_synchronously
     await saveUserProfile(context);

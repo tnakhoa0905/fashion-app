@@ -1,15 +1,16 @@
-import 'package:dartz/dartz.dart';
-import 'package:fashion_app/core/errors/failure.dart';
-import 'package:fashion_app/domain/repository/repositories.dart';
-import 'package:fashion_app/domain/usecases/base_usecase.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:dartz/dartz.dart';
+// import 'package:fashion_app/core/errors/failure.dart';
+// import 'package:fashion_app/domain/repository/repositories.dart';
+// import 'package:fashion_app/domain/usecases/base_usecase.dart';
+// // import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:supabase_flutter/supabase_flutter.dart';
 
-class SignInWithFacebook extends BaseUsecase<User, NoParameters> {
-  final AuthRepository _authRepository;
-  SignInWithFacebook(this._authRepository);
+// class SignInWithFacebook extends BaseUsecase<User, NoParameters> {
+//   final AuthRepository _authRepository;
+//   SignInWithFacebook(this._authRepository);
 
-  @override
-  Future<Either<Failure, User>> call(NoParameters parameters) async {
-    return await _authRepository.signInWithFacebook();
-  }
-}
+//   @override
+//   Future<Either<Failure, User>> call(NoParameters parameters) async {
+//     return await _authRepository.signInWithFacebook();
+//   }
+// }

@@ -2,7 +2,9 @@ import 'package:dartz/dartz.dart';
 import 'package:fashion_app/core/errors/failure.dart';
 import 'package:fashion_app/domain/repository/repositories.dart';
 import 'package:fashion_app/domain/usecases/base_usecase.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
+
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SignUpUsecase extends BaseUsecase<User, SignUpUsecaseInputs> {
   final AuthRepository _authRepository;

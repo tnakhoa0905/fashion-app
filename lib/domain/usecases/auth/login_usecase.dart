@@ -3,7 +3,8 @@ import 'package:fashion_app/core/errors/failure.dart';
 import 'package:fashion_app/domain/repository/repositories.dart'
     show AuthRepository;
 import 'package:fashion_app/domain/usecases/base_usecase.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class LoginUsecase extends BaseUsecase<User, LoginUsecaseInputs> {
   final AuthRepository _authRepository;

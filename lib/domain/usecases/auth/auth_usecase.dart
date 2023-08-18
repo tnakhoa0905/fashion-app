@@ -17,7 +17,7 @@ export 'reauthenticate_user_usecase.dart';
 
 class AuthUsecases {
   final LoginUsecase loginUsecase;
-  final SignInWithFacebook withFacebookUsecase;
+  // final SignInWithFacebook withFacebookUsecase;
   final SignINWithGoogleUsecase withGoogleUsecase;
   final SignoutUsecase signoutUsecase;
   final SignUpUsecase signUpUsecase;
@@ -25,7 +25,7 @@ class AuthUsecases {
   final ResetPasswordUsecase resetPasswordUsecase;
   AuthUsecases({
     required this.loginUsecase,
-    required this.withFacebookUsecase,
+    // required this.withFacebookUsecase,
     required this.updateEmailUsecase,
     required this.withGoogleUsecase,
     required this.signoutUsecase,
