@@ -15,14 +15,13 @@ class GoogleAndFacebookLogin extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        InkWell(
-          onTap: facebookLogin,
-          child: Padding(
-            padding: const EdgeInsets.all(AppPadding.p20),
-            child: SvgPicture.asset(AssetsIconPath.facebook),
-          ),
-        ),
-        const SizedBox(width: AppSizes.s15),
+        // InkWell(
+        //   onTap: facebookLogin,
+        //   child: Padding(
+        //     padding: const EdgeInsets.all(AppPadding.p20),
+        //     child: SvgPicture.asset(AssetsIconPath.facebook),
+        //   ),
+        // ),
         InkWell(
           onTap: googleLogin,
           child: Padding(
