@@ -61,10 +61,11 @@ Future<void> startInitialize() async {
   print('aloooo 2');
   await EasyLocalization.ensureInitialized();
   print(Stripe.publishableKey =
-  dotenv.env[AppConstants.stripePublishableKey] as String);
+      dotenv.env[AppConstants.stripePublishableKey] as String);
 
   print('aloooo 3');
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  print('aloooo 4');
   print('aloooo 4');
   print(Stripe.publishableKey =
       dotenv.env[AppConstants.stripePublishableKey] as String);
