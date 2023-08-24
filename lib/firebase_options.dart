@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -28,10 +25,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -49,24 +43,41 @@ class DefaultFirebaseOptions {
     }
   }
 
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyA_FHE2qcUWl6-hgOlUvRk60zeDqZufVcE',
+    appId: '1:822199588970:web:e3f84eaee4aae3b8d91213',
+    messagingSenderId: '822199588970',
+    projectId: 'martsimple-app',
+    authDomain: 'martsimple-app.firebaseapp.com',
+    storageBucket: 'martsimple-app.appspot.com',
+    measurementId: 'G-RJWM81Q4MQ',
+  );
+
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAo4NxFrg5xWCfBNzeLD0ZVUADKatE4iMA',
-    appId: '1:489509362219:android:b1f57cd6af90f13e04286e',
-    messagingSenderId: '489509362219',
-    projectId: 'chatme-f8dd8',
-    storageBucket: 'chatme-f8dd8.appspot.com',
+    apiKey: 'AIzaSyAif6tgsFrRZrRZ1_d8wYDgA0fahlSwnaI',
+    appId: '1:822199588970:android:aaf59c3d4e68cff9d91213',
+    messagingSenderId: '822199588970',
+    projectId: 'martsimple-app',
+    storageBucket: 'martsimple-app.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCX-MQWr8QbXG3McP_-NFrqHdWm6VVD9Sk',
-    appId: '1:489509362219:ios:e4c61a39b0123f0d04286e',
-    messagingSenderId: '489509362219',
-    projectId: 'chatme-f8dd8',
-    storageBucket: 'chatme-f8dd8.appspot.com',
-    androidClientId:
-        '489509362219-dueio1dbv2eldfl1dt2h7vghpr2rrf8r.apps.googleusercontent.com',
-    iosClientId:
-        '489509362219-9srincj2t49ds61ni1idoigasvqo6mlc.apps.googleusercontent.com',
+    apiKey: 'AIzaSyBtae0zPnE1LlX-4AICAkgjFixZ6xDJv4c',
+    appId: '1:822199588970:ios:c5020d49fa4a79e2d91213',
+    messagingSenderId: '822199588970',
+    projectId: 'martsimple-app',
+    storageBucket: 'martsimple-app.appspot.com',
+    iosClientId: '822199588970-7ol5ehl90r1alvq0pblleopln3cajajr.apps.googleusercontent.com',
     iosBundleId: 'com.example.fashionApp',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyBtae0zPnE1LlX-4AICAkgjFixZ6xDJv4c',
+    appId: '1:822199588970:ios:36d43b1565223a15d91213',
+    messagingSenderId: '822199588970',
+    projectId: 'martsimple-app',
+    storageBucket: 'martsimple-app.appspot.com',
+    iosClientId: '822199588970-dv1ac6ll8le2if76js00989c93f4f8fv.apps.googleusercontent.com',
+    iosBundleId: 'com.example.fashionApp.RunnerTests',
   );
 }

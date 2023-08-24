@@ -12,7 +12,6 @@ class MyBlocObserver extends BlocObserver {
   @override
   void onCreate(BlocBase bloc) {
     super.onCreate(bloc);
-    print('alo alo');
     log(bloc.toString());
   }
 }
