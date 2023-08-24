@@ -54,15 +54,13 @@ void main() async {
 }
 
 Future<void> startInitialize() async {
-  print('aloooo');
   await dotenv.load();
   print(dotenv.env[AppConstants.apiKey]);
-  await serviceLocatorStart();
-  print('aloooo 2');
-  await EasyLocalization.ensureInitialized();
-  print(Stripe.publishableKey =
-      dotenv.env[AppConstants.stripePublishableKey] as String);
+  print(dotenv.env[AppConstants.consumerKey]);
+  print(dotenv.env[AppConstants.consumerSecret]);
 
+  await serviceLocatorStart();
+  await EasyLocalization.ensureInitialized();
   print('aloooo 3');
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   print('aloooo 4');

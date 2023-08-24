@@ -14,7 +14,14 @@ abstract class AppConstants {
   static const addressCollection = 'address';
   static const usersCollection = 'users';
   static const favouritesCollection = 'favourites';
+  //**
+  //
+  static const consumerKey = 'CONSUMER_KEY';
 
+  static const consumerSecret = 'CONSUMER_SECRET';
+
+  //
+  // */
   // home constants
   static const homeProductsLimit = 10;
   static const categoryProductsLimit = 20;
