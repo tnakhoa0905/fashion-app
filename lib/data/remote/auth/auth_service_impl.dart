@@ -20,18 +20,11 @@ class AuthServiceImpl implements AuthService {
     try {
       final res = await supabase.auth.signUp(email: email, password: password);
       final User? user = res.user;
+      print('Sign Up Supabase');
       return user;
-
-      //  on FirebaseAuthException catch (e) {
-      //   if (e.code == 'weak-password') {
-      //     throw AuthException(message: AppStrings.passwordProvidedWeak);
-      //   } else if (e.code == 'email-already-in-use') {
-      //     throw AuthException(message: AppStrings.accountAlreadyExists);
-      //   }
     } catch (e) {
       throw Exception(e);
     }
-    // return null;
   }
 
   @override
@@ -51,7 +44,6 @@ class AuthServiceImpl implements AuthService {
     } catch (e) {
       throw Exception(e);
     }
-    // return null;
   }
 
   @override

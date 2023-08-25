@@ -57,7 +57,7 @@ abstract class SearchProductRepository {
 
 abstract class FirebaseUserRepository {
   Future<Either<Failure, void>> createUserProfile(
-      UserModel user, String userId);
+      UserModel user, String userName, String passWord);
   Future<Either<Failure, UserModel>> getUserProfileById(String userId);
   Future<Either<Failure, void>> updateUserProfile(
       UserModel user, String userId);

@@ -17,10 +17,10 @@ class FirebaseUserRepositoryImpl implements FirebaseUserRepository {
   @override
   Future<Either<Failure, UserModel>> getUserProfileById(String userUid) async {
     try {
+      print('Getuser API imp');
       final doc = await _dataSource.getUserProfileById(userUid);
-
-      if (doc.exists && doc.data() != null) {
-        return Right(UserModel.fromMap(doc.data()!));
+      if (doc != null) {
+        return Right(doc);
       }
       return const Left(FirebaseFailure("User Not Exist"));
     } catch (e) {
@@ -30,13 +30,15 @@ class FirebaseUserRepositoryImpl implements FirebaseUserRepository {
 
   @override
   Future<Either<Failure, void>> createUserProfile(
-      UserModel user, String userUid) async {
+      UserModel user, String userName, String passWord) async {
+    print('create user firebase imp');
     try {
-      final doc = await _dataSource.getUserProfileById(userUid);
-      if (doc.exists) {
+      print('on func');
+      final doc = await _dataSource.getUserProfileById(userName);
+      if (doc != null) {
         return const Left(FirebaseFailure('User Already Exist'));
       }
-      await _dataSource.createUserProfile(user, userUid);
+      await _dataSource.createUserProfile(user, userName, passWord);
       return const Right(Void);
     } catch (e) {
       return Left(FirebaseFailure(e.toString()));

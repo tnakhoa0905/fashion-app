@@ -164,13 +164,12 @@ class AuthCubit extends Cubit<AuthState> {
         profilePhoto: _user!.userMetadata?['avatar_url'] ??
             AppConstants.profilePicturePlaceholder,
       );
-
       BlocProvider.of<UserCubit>(context)
-          .createUserprofile(userModel, userModel.uid)
+          .createUserprofile(userModel, userModel.email, passController.text)
           .then(
         (value) async {
           await BlocProvider.of<UserCubit>(context)
-              .getUserProfileById(userModel.uid);
+              .getUserProfileById(userModel.email);
         },
       );
     }

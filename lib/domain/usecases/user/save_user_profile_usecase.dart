@@ -9,13 +9,17 @@ class SaveUserProfileUsecase extends BaseUsecase<void, SaveUserInputs> {
   SaveUserProfileUsecase(this._repository);
   @override
   Future<Either<Failure, void>> call(SaveUserInputs parameters) async {
+    print('show in svaeUserProfile');
+    print(parameters.userModel);
     return await _repository.createUserProfile(
-        parameters.userModel, parameters.userUid);
+        parameters.userModel, parameters.userName, parameters.passWord);
   }
 }
 
 class SaveUserInputs {
   UserModel userModel;
-  String userUid;
-  SaveUserInputs(this.userModel, this.userUid);
+  String userName;
+  String passWord;
+
+  SaveUserInputs(this.userModel, this.userName, this.passWord);
 }
