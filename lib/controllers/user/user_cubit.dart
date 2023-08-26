@@ -10,6 +10,8 @@ import 'package:fashion_app/domain/usecases/user/get_user_profile_by_id_usecase.
 import 'package:fashion_app/domain/usecases/user/save_user_profile_usecase.dart';
 import 'package:fashion_app/domain/usecases/user/update_user_profile_usecase.dart';
 
+import '../../domain/entities/account/user_api.dart';
+
 part 'user_state.dart';
 
 class UserCubit extends Cubit<UserState> {
@@ -22,11 +24,11 @@ class UserCubit extends Cubit<UserState> {
   final DeleteUserProfileUsecase _deleteUsecase;
   final SaveUserProfileUsecase _saveUsecase;
 
-  UserModel? _user;
+  UserApi? _user;
 
-  UserModel? get user {
+  UserApi? get user {
     if (_user != null) {
-      return _user!.toDomain();
+      return _user!;
     } else {
       return null;
     }
@@ -56,7 +58,7 @@ class UserCubit extends Cubit<UserState> {
     print(entity);
     (await _saveUsecase.call(SaveUserInputs(entity, userName, passWord))).fold(
       (failure) {
-        showToastMessage(failure.message);
+        // showToastMessage(failure.message);
         print('faild');
         print(failure.message);
         emit(UserFailure());
@@ -91,21 +93,31 @@ class UserCubit extends Cubit<UserState> {
       String? zipcode}) async {
     if (_user != null) {
       final newUser = _user!.copyWith(
+          id: 101,
           username: username,
           email: email,
-          phoneNumber: phone,
-          location: location,
-          zipCode: zipcode,
-          profilePhoto: profilePhoto);
+          avatarUrl: profilePhoto,
+          shipping: Ing(
+              firstName: '',
+              lastName: 'lastName',
+              company: 'company',
+              address1: 'address1',
+              address2: 'address2',
+              city: 'city',
+              postcode: 'postcode',
+              country: 'country',
+              state: 'state',
+              phone: phone));
 
-      (await _updateusecase.call(UpdateUserInputs(newUser, newUser.uid))).fold(
+      (await _updateusecase.call(UpdateUserInputs(newUser, newUser.email)))
+          .fold(
         (failure) {
           showToastMessage(failure.message);
           emit(UserFailure());
         },
         (r) {
           emit(UserUpdated());
-          getUserProfileById(newUser.uid);
+          getUserProfileById(newUser.email);
         },
       );
     }

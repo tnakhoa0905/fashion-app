@@ -25,7 +25,7 @@ class ProfileHeaderSection extends StatelessWidget {
               CircleAvatar(
                 radius: 45,
                 backgroundImage: NetworkImage(
-                    BlocProvider.of<UserCubit>(context).user!.profilePhoto),
+                    BlocProvider.of<UserCubit>(context).user!.avatarUrl),
               ),
               const SizedBox(height: AppSizes.s10),
               TextUtils(

@@ -55,15 +55,15 @@ class PersonalInformationSection extends StatelessWidget {
                       ),
                       _rowText(
                         label: AppStrings.location,
-                        value: cubit.user!.location!,
+                        value: cubit.user!.shipping.address1,
                       ),
                       _rowText(
                         label: AppStrings.zipcode,
-                        value: cubit.user!.zipCode!,
+                        value: cubit.user!.shipping.postcode,
                       ),
                       _rowText(
                         label: AppStrings.phoneNumber,
-                        value: cubit.user!.phoneNumber!,
+                        value: cubit.user?.shipping.phone ?? '',
                       ),
                     ],
                   ),

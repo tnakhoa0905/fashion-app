@@ -8,6 +8,7 @@ import 'package:fashion_app/core/errors/failure.dart';
 import 'package:fashion_app/data/data_source/user_remote_data_source.dart';
 
 import 'package:fashion_app/domain/entities/account/user.dart';
+import 'package:fashion_app/domain/entities/account/user_api.dart';
 
 import '../../domain/repository/repositories.dart';
 
@@ -15,7 +16,7 @@ class FirebaseUserRepositoryImpl implements FirebaseUserRepository {
   final UserRemoteDataSource _dataSource;
   FirebaseUserRepositoryImpl(this._dataSource);
   @override
-  Future<Either<Failure, UserModel>> getUserProfileById(String userUid) async {
+  Future<Either<Failure, UserApi>> getUserProfileById(String userUid) async {
     try {
       print('Getuser API imp');
       final doc = await _dataSource.getUserProfileById(userUid);
@@ -57,7 +58,7 @@ class FirebaseUserRepositoryImpl implements FirebaseUserRepository {
 
   @override
   Future<Either<Failure, void>> updateUserProfile(
-      UserModel user, String usersUid) async {
+      UserApi user, String usersUid) async {
     try {
       await _dataSource.updateUserProfile(user, usersUid);
       return const Right(Void);

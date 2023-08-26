@@ -41,9 +41,9 @@ class ProfileCubit extends Cubit<ProfileState> {
     if (cubit.user != null) {
       username.text = cubit.user!.username;
       email.text = cubit.user!.email;
-      phone.text = cubit.user!.phoneNumber ?? "";
-      location.text = cubit.user!.location ?? "";
-      zipcode.text = cubit.user!.zipCode ?? "";
+      phone.text = cubit.user?.shipping.phone ?? "";
+      location.text = cubit.user?.billing.address1 ?? "";
+      zipcode.text = cubit.user?.billing.postcode ?? "";
     }
   }
 
@@ -92,7 +92,7 @@ class ProfileCubit extends Cubit<ProfileState> {
   }
 
   String profileImage(BuildContext context) {
-    final userImage = BlocProvider.of<UserCubit>(context).user?.profilePhoto ??
+    final userImage = BlocProvider.of<UserCubit>(context).user?.avatarUrl ??
         AppConstants.profilePicturePlaceholder;
     return image ?? userImage;
   }

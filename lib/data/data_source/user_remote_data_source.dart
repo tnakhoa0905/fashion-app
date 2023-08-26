@@ -1,12 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fashion_app/data/remote/firebase_database/firebase_user_service.dart';
 import 'package:fashion_app/domain/entities/account/user.dart';
+import 'package:fashion_app/domain/entities/account/user_api.dart';
 
 abstract class UserRemoteDataSource {
   Future<void> createUserProfile(
       UserModel user, String userName, String passWord);
-  Future<UserModel?> getUserProfileById(String userUid);
-  Future<void> updateUserProfile(UserModel user, String userUid);
+  Future<UserApi?> getUserProfileById(String userUid);
+  Future<void> updateUserProfile(UserApi user, String userUid);
   Future<void> deleteUserProfile(String userUid);
 }
 
@@ -14,7 +15,7 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
   final FirebaseUserService _service;
   UserRemoteDataSourceImpl(this._service);
   @override
-  Future<UserModel?> getUserProfileById(String userUid) async {
+  Future<UserApi?> getUserProfileById(String userUid) async {
     print('getUser UserRemoteDataSource');
     return _service.getUserProfileById(userUid);
   }
@@ -32,7 +33,7 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
   }
 
   @override
-  Future<void> updateUserProfile(UserModel user, String userUid) async {
+  Future<void> updateUserProfile(UserApi user, String userUid) async {
     return await _service.updateUserProfile(user, userUid);
   }
 }

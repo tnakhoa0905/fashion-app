@@ -39,7 +39,7 @@ class CustomDrawer extends StatelessWidget {
                   CircleAvatar(
                     radius: 30,
                     backgroundImage: NetworkImage(
-                      BlocProvider.of<UserCubit>(context).user!.profilePhoto,
+                      BlocProvider.of<UserCubit>(context).user!.avatarUrl,
                     ),
                   ),
                   const SizedBox(width: AppSizes.s15),

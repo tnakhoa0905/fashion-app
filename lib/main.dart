@@ -55,18 +55,9 @@ void main() async {
 
 Future<void> startInitialize() async {
   await dotenv.load();
-  print(dotenv.env[AppConstants.apiKey]);
-  print(dotenv.env[AppConstants.consumerKey]);
-  print(dotenv.env[AppConstants.consumerSecret]);
-
   await serviceLocatorStart();
   await EasyLocalization.ensureInitialized();
-  print('aloooo 3');
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  print('aloooo 4');
-
-  print(Stripe.publishableKey =
-      dotenv.env[AppConstants.stripePublishableKey] as String);
   Stripe.publishableKey =
       dotenv.env[AppConstants.stripePublishableKey] as String;
   await Stripe.instance.applySettings();

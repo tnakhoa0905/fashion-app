@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:equatable/equatable.dart';
+import 'package:fashion_app/domain/entities/account/user_api.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
@@ -128,11 +129,11 @@ class PaymentCubit extends Cubit<PaymentState> {
       address: address,
       email: user?.email,
       name: user?.username,
-      phone: user?.phoneNumber,
+      phone: user?.shipping.phone ?? "",
     );
   }
 
-  UserModel? _getUser(BuildContext context) {
+  UserApi? _getUser(BuildContext context) {
     return BlocProvider.of<UserCubit>(context).user;
   }
 

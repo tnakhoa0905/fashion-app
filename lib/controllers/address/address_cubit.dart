@@ -94,7 +94,6 @@ class AddressCubit extends Cubit<AddressState> {
       },
       (r) {
         addressList.add(address);
-
         emit(AddressLoaded());
       },
     );

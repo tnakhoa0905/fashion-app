@@ -5,6 +5,7 @@ import 'package:fashion_app/core/errors/failure.dart';
 import 'package:fashion_app/domain/entities/account/address.dart';
 import 'package:fashion_app/domain/entities/account/favourites.dart';
 import 'package:fashion_app/domain/entities/account/user.dart';
+import 'package:fashion_app/domain/entities/account/user_api.dart';
 import 'package:fashion_app/domain/entities/payment/payment_entity.dart';
 import 'package:fashion_app/domain/entities/product/product_entity.dart';
 
@@ -58,9 +59,8 @@ abstract class SearchProductRepository {
 abstract class FirebaseUserRepository {
   Future<Either<Failure, void>> createUserProfile(
       UserModel user, String userName, String passWord);
-  Future<Either<Failure, UserModel>> getUserProfileById(String userId);
-  Future<Either<Failure, void>> updateUserProfile(
-      UserModel user, String userId);
+  Future<Either<Failure, UserApi>> getUserProfileById(String userId);
+  Future<Either<Failure, void>> updateUserProfile(UserApi user, String userId);
   Future<Either<Failure, void>> deleteUserProfile(String userId);
 }
 
