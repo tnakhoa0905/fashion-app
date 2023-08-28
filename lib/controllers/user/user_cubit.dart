@@ -35,11 +35,12 @@ class UserCubit extends Cubit<UserState> {
   }
 
   // read
-  getUserProfileById(String? userUid) async {
-    if (userUid == null) {
+  getUserProfileById(String? userName) async {
+    if (userName == null) {
       return;
     }
-    (await _getUsecase.call(userUid)).fold(
+    print(userName);
+    (await _getUsecase.call(userName)).fold(
       (failure) {
         //   showToastMessage(failure.message);
         emit(UserFailure());

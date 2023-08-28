@@ -69,8 +69,8 @@ setupAPIService() {
   getIt.registerLazySingleton<DioFactroy>(() => DioFactroyImpl());
 
   final productServiceHeaders = <String, String>{
-    "X-RapidAPI-Key": dotenv.env[AppConstants.apiKey] as String,
-    "X-RapidAPI-Host": dotenv.env[AppConstants.apiHost] as String
+    "consumer_key": dotenv.env[AppConstants.consumerKey] as String,
+    "consumer_secret": dotenv.env[AppConstants.consumerSecret] as String
   };
   final productServiceDio = getIt<DioFactroy>().getDio(productServiceHeaders);
   getIt.registerLazySingleton<ProductService>(

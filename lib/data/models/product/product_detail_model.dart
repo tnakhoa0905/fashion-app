@@ -1,47 +1,91 @@
-class ProductDetailModel {
-  final int? id;
-  final String? name;
-  final String? description;
-  final String? categoryName;
-  final String? gender;
-  final String? productCode;
-  final String? brand;
-  final List<String>? images;
-  final double? currentPrice;
-  final double? previousPrice;
-  final String? currency;
-  final String? startDateTime;
-  ProductDetailModel({
-    this.id,
-    this.name,
-    this.description,
-    this.categoryName,
-    this.gender,
-    this.productCode,
-    this.brand,
-    this.images,
-    this.currentPrice,
-    this.previousPrice,
-    this.currency,
-    this.startDateTime,
-  });
+// To parse this JSON data, do
+//
+//     final productModel = productModelFromJson(jsonString);
 
-  factory ProductDetailModel.fromJson(Map<String, dynamic> json) {
-    return ProductDetailModel(
-      id: json['id'],
-      name: json['name'],
-      description: json['description'],
-      categoryName: json['productType']['name'],
-      gender: json['gender'],
-      productCode: json['productCode'],
-      brand: json['brand']['name'],
-      images: (json['media']['images'] as List<dynamic>)
-          .map((e) => e['url'].toString())
-          .toList(),
-      currentPrice: json['price']['current']['value'],
-      previousPrice: json['price']['previous']['value'],
-      currency: json['price']['currency'],
-      startDateTime: json['startDateTime'],
-    );
-  }
+import 'dart:convert';
+
+ProductDetailModel productModelFromJson(String str) =>
+    ProductDetailModel.fromJson(json.decode(str));
+
+String productModelToJson(ProductDetailModel data) =>
+    json.encode(data.toJson());
+
+class ProductDetailModel {
+  int id;
+  String name;
+  String slug;
+  String permalink;
+  DateTime dateCreated;
+  DateTime dateCreatedGmt;
+  DateTime dateModified;
+  DateTime dateModifiedGmt;
+  String type;
+  String status;
+  bool featured;
+  String catalogVisibility;
+  String description;
+  String shortDescription;
+  String sku;
+  double price;
+  List<dynamic> images;
+
+  ProductDetailModel(
+      {required this.id,
+      required this.name,
+      required this.slug,
+      required this.permalink,
+      required this.dateCreated,
+      required this.dateCreatedGmt,
+      required this.dateModified,
+      required this.dateModifiedGmt,
+      required this.type,
+      required this.status,
+      required this.featured,
+      required this.catalogVisibility,
+      required this.description,
+      required this.shortDescription,
+      required this.sku,
+      required this.price,
+      required this.images});
+
+  factory ProductDetailModel.fromJson(Map<String, dynamic> json) =>
+      ProductDetailModel(
+        id: json["id"],
+        name: json["name"],
+        slug: json["slug"],
+        permalink: json["permalink"],
+        dateCreated: DateTime.parse(json["date_created"]),
+        dateCreatedGmt: DateTime.parse(json["date_created_gmt"]),
+        dateModified: DateTime.parse(json["date_modified"]),
+        dateModifiedGmt: DateTime.parse(json["date_modified_gmt"]),
+        type: json["type"] ?? '',
+        status: json["status"] ?? '',
+        featured: json["featured"],
+        catalogVisibility: json["catalog_visibility"],
+        description: json["description"] ?? '',
+        shortDescription: json["short_description"] ?? '',
+        sku: json["sku"] ?? '',
+        price: json["price"].toString() == "" ? 0 : json["price"] as double,
+        images: List<dynamic>.from(json["images"].map((x) => x)),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "name": name,
+        "slug": slug,
+        "permalink": permalink,
+        "date_created": dateCreated.toIso8601String(),
+        "date_created_gmt": dateCreatedGmt.toIso8601String(),
+        "date_modified": dateModified.toIso8601String(),
+        "date_modified_gmt": dateModifiedGmt.toIso8601String(),
+        "type": type,
+        "status": status,
+        "featured": featured,
+        "catalog_visibility": catalogVisibility,
+        "description": description,
+        "short_description": shortDescription,
+        "sku": sku,
+        "price": price,
+        "images": List<dynamic>.from(images.map((x) => x)),
+      };
 }

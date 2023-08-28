@@ -6,22 +6,22 @@ import 'package:fashion_app/domain/entities/product/product_entity.dart';
 extension ProdcutModelExtensions on ProductModel {
   ProductEntity toDomain() {
     return ProductEntity(
-      id: id ?? 0,
-      name: name ?? "",
-      price: price ?? 0.0,
-      currency: currency ?? "USD",
-      brandName: brandName ?? "",
-      colour: colour ?? "",
-      productCode: productCode ?? 0,
-      url: url ?? "",
+      id: id,
+      name: name,
+      price: price,
+      currency: "USD",
+      brandName: slug,
+      colour: "",
+      productCode: 0,
+      url: 'permalink',
       imageUrl: fixImagePath(),
-      additionalImageUrls: additionalImageUrls ?? <String>[],
+      additionalImageUrls: <String>[],
     );
   }
 
   String fixImagePath() {
-    if (imageUrl != null) {
-      return 'https://${imageUrl!}';
+    if ('images' != null) {
+      return 'https://${'i.pinimg.com/1200x/d9/f8/6e/d9f86e705dc104e812c10873dd004ed5.jpg'}';
     } else {
       return "";
     }
@@ -34,15 +34,15 @@ extension ProductDetailModelExtension on ProductDetailModel {
       id: id ?? 0,
       name: name ?? "",
       description: description ?? "",
-      categoryName: categoryName ?? "",
-      gender: gender ?? "",
-      productCode: productCode ?? "",
-      brand: brand ?? "",
+      categoryName: name ?? "",
+      gender: "",
+      productCode: "",
+      brand: "",
       images: fixImagesPath(),
-      currentPrice: currentPrice ?? 0.0,
-      previousPrice: previousPrice ?? 0.0,
-      currency: currency ?? "USD",
-      startDateTime: startDateTime ?? "",
+      currentPrice: 0.0,
+      previousPrice: 0.0,
+      currency: "USD",
+      startDateTime: "",
     );
   }
 

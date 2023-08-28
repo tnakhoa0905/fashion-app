@@ -33,6 +33,7 @@ class FavouritesProductsGridview extends StatelessWidget {
           image: favouriteProducts[index].imageUrl,
           label: favouriteProducts[index].name,
           price: favouriteProducts[index].price,
+          // price: '0',
         );
       },
     );
