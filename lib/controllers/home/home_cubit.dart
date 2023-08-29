@@ -37,14 +37,14 @@ class HomeCubit extends Cubit<HomeState> {
     emit(HomeProductLoading());
     try {
       await _getProductByCategory(MenCategory.shirts);
-      await _getProductByCategory(MenCategory.suitsAndTailoring);
-      await _getProductByCategory(WomenCategory.dresses);
-      await _getProductByCategory(WomenCategory.jeans);
-      await _getProductByCategory(WomenCategory.tops);
-      await _getProductByCategory(WomenCategory.shoes);
-      await _getProductByCategory(MenCategory.shoesAndSneakers);
-      await _getProductByCategory(MenCategory.shorts);
-      await _getProductByCategory(MenCategory.tShirtsAndTankTops);
+      // await _getProductByCategory(MenCategory.suitsAndTailoring);
+      // await _getProductByCategory(WomenCategory.dresses);
+      // await _getProductByCategory(WomenCategory.jeans);
+      // await _getProductByCategory(WomenCategory.tops);
+      // await _getProductByCategory(WomenCategory.shoes);
+      // await _getProductByCategory(MenCategory.shoesAndSneakers);
+      // await _getProductByCategory(MenCategory.shorts);
+      // await _getProductByCategory(MenCategory.tShirtsAndTankTops);
       emit(HomeProductLoaded());
     } on ServerException catch (e) {
       emit(HomeProductsFailure(e.message));
@@ -59,22 +59,22 @@ class HomeCubit extends Cubit<HomeState> {
     switch (categoryId) {
       case MenCategory.shirts:
         return menTshrits;
-      case MenCategory.suitsAndTailoring:
-        return menSutis;
-      case WomenCategory.dresses:
-        return womenDressess;
-      case WomenCategory.jeans:
-        return womenJeans;
-      case MenCategory.shorts:
-        return menShorts;
-      case MenCategory.shoesAndSneakers:
-        return menShoesAndSneakers;
-      case MenCategory.tShirtsAndTankTops:
-        return tShirtsAndTankTops;
-      case WomenCategory.shoes:
-        return womenShoes;
-      case WomenCategory.tops:
-        return womenTops;
+      // case MenCategory.suitsAndTailoring:
+      //   return menSutis;
+      // case WomenCategory.dresses:
+      //   return womenDressess;
+      // case WomenCategory.jeans:
+      //   return womenJeans;
+      // case MenCategory.shorts:
+      //   return menShorts;
+      // case MenCategory.shoesAndSneakers:
+      //   return menShoesAndSneakers;
+      // case MenCategory.tShirtsAndTankTops:
+      //   return tShirtsAndTankTops;
+      // case WomenCategory.shoes:
+      //   return womenShoes;
+      // case WomenCategory.tops:
+      //   return womenTops;
 
       default:
         return [];

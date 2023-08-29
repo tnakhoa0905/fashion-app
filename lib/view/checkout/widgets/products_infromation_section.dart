@@ -48,7 +48,7 @@ class ProductInfromationSection extends StatelessWidget {
                     ),
                   ],
                 ),
-                ..._generateProductsInformationList(context),
+                _generateProductsInformationList(context),
               ],
             ),
           ),
@@ -58,19 +58,28 @@ class ProductInfromationSection extends StatelessWidget {
   }
 }
 
-List<Widget> _generateProductsInformationList(BuildContext context) {
+Widget _generateProductsInformationList(BuildContext context) {
+  print('sai dau ');
   final products =
       BlocProvider.of<CheckoutCubit>(context).getProductsInformations(context);
-  return List.generate(
-    products.length,
-    (index) {
-      return _productInfromation(
-        name: products[index].name,
-        count: products[index].count,
-        price: products[index].price,
-      );
-    },
-  );
+  print(products.length);
+  // return List.generate(
+  //   products.length,
+  //   (index) {
+  //     return _productInfromation(
+  //       name: products[index].name,
+  //       count: products[index].count,
+  //       price: products[index].price,
+  //     );
+  //   },
+  // );
+  return ListView.builder(
+      shrinkWrap: true,
+      itemCount: products.length,
+      itemBuilder: (context, index) => _productInfromation(
+          name: products[index].name,
+          count: products[index].count,
+          price: products[index].price));
 }
 
 Padding _productInfromation(

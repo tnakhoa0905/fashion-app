@@ -122,6 +122,7 @@ class AuthCubit extends Cubit<AuthState> {
         _failure(context, failure.message);
       },
       (user) {
+        print(user);
         _success(context, user);
       },
     );
@@ -149,7 +150,6 @@ class AuthCubit extends Cubit<AuthState> {
       },
       (r) {
         emit(AuthSuccess());
-
         showToastMessage("Email Successfully Changed");
       },
     );
@@ -214,7 +214,7 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   void _success(BuildContext context, User user) async {
-    await _prefs.saveUserUid(user.id);
+    await _prefs.saveUserUid(user.email!);
     _user = user;
     // ignore: use_build_context_synchronously
     await saveUserProfile(context);

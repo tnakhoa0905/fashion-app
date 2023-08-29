@@ -247,7 +247,7 @@ void setupHomeService() {
 
 setupMapService() {
   if (!GetIt.I.isRegistered<AddressCubit>()) {
-    getIt.registerFactory<AddressCubit>(() => AddressCubit(getIt()));
+    getIt.registerFactory<AddressCubit>(() => AddressCubit(getIt(), []));
     getIt.registerFactory<MapCubit>(() => MapCubit(getIt()));
   }
 }

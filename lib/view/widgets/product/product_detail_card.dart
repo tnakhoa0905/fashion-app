@@ -71,8 +71,10 @@ class ProductDetailCard extends StatelessWidget {
               FavouriteIconButton(
                 productId: entity.id,
                 name: entity.name,
-                image: entity.images[0],
-                price: entity.currentPrice,
+                image: entity.images.isEmpty
+                    ? "i.pinimg.com/1200x/d9/f8/6e/d9f86e705dc104e812c10873dd004ed5.jpg"
+                    : "",
+                price: entity.price,
               ),
             ],
           ),
@@ -118,8 +120,7 @@ class ProductDetailCard extends StatelessWidget {
                         width: 160,
                         child: TextUtils(
                           //Gender //categoryName // Brand
-                          text:
-                              '${entity.gender}\n${entity.categoryName}\n${entity.brand}',
+                          text: '${entity.name}\n${entity.slug}',
                           fontSize: 20,
                           fontWe: FontWe.medium,
                           tr: false,
@@ -128,18 +129,18 @@ class ProductDetailCard extends StatelessWidget {
                       const Spacer(),
                       Row(
                         children: [
-                          TextUtils(
-                            text: '\$${entity.previousPrice}',
-                            fontSize: 18,
-                            decoration: TextDecoration.lineThrough,
-                            color: context.primaryColorLight,
-                            tr: false,
-                          ),
+                          // TextUtils(
+                          //   text: '\$${entity.previousPrice}',
+                          //   fontSize: 18,
+                          //   decoration: TextDecoration.lineThrough,
+                          //   color: context.primaryColorLight,
+                          //   tr: false,
+                          // ),
                           const SizedBox(
                             width: 10,
                           ),
                           TextUtils(
-                            text: '\$${entity.currentPrice}',
+                            text: '\$${entity.price}',
                             fontSize: 18,
                             fontWe: FontWe.medium,
                             tr: false,

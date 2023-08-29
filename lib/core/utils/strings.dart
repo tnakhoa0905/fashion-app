@@ -54,7 +54,8 @@ abstract class AppStrings {
   static const mens = 'mens';
   static const womens = 'womens';
   static const catalog = 'catalog';
-  static const tShirts = 't_shirts';
+  //change name t-shirt
+  static const tShirts = 'Product';
   static const mensTShirts = 'mens_t_shirts';
   static const mensSuitsAndTailoring = 'mens_suits_tailoring';
   static const menTShritsAndTops = 'men_t_shrits_tops';

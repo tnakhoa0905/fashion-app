@@ -17,7 +17,7 @@ import 'package:fashion_app/view/widgets/common/custom_alert_dialog.dart';
 part 'address_state.dart';
 
 class AddressCubit extends Cubit<AddressState> {
-  AddressCubit(this._repository) : super(AddressInitial());
+  AddressCubit(this._repository, this.addressList) : super(AddressInitial());
 
   final bNum = TextEditingController();
   final additional = TextEditingController();
@@ -28,7 +28,7 @@ class AddressCubit extends Cubit<AddressState> {
   final FirebaseAddressRepository _repository;
 
   int currentAddressType = 0;
-  List<AddressEntity> addressList = [];
+  List<AddressEntity> addressList;
 
   static AddressCubit getCubit(BuildContext context) =>
       BlocProvider.of<AddressCubit>(context);

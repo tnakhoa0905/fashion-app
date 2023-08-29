@@ -59,39 +59,40 @@ class _ProductService implements ProductService {
       )
           .compose(
             _dio.options,
-            '/wc/v3/products',
+            '/wc/v3/products/$id',
             queryParameters: queryParameters,
             data: _data,
           )
           .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
       print('formating');
-      List<ProductDetailModel>? value;
-      var result = _result.data! as List<dynamic>;
+      ProductDetailModel value;
+      var result = _result.data!;
 
       print(result);
 
       print('parse');
-      print('name' + result[0]['name'].runtimeType.toString());
-      print(result[0]['slug'].runtimeType);
-      print('perma' + result[0]['permalink'].runtimeType.toString());
-      print(result[0]['date_created'].runtimeType);
-      print(result[0]['date_created_gmt'].runtimeType);
-      print(result[0]['date_modified'].runtimeType);
-      print(result[0]['date_modified_gmt'].runtimeType);
-      print(result[0]['type'].runtimeType);
-      print(result[0]['status'].runtimeType);
-      print(result[0]['featured'].runtimeType);
-      print(result[0]['catalog_visibility'].runtimeType);
-      print('des ${result[0]['description'].runtimeType}');
-      print('dessss${result[0]['short_description'].runtimeType}');
-      print(result[0]['sku'].runtimeType);
-      print(result[0]['price'].runtimeType);
-      print(result[0]['id'].runtimeType);
+      print('name' + result['name'].runtimeType.toString());
+      print(result['slug'].runtimeType);
+      print('perma' + result['permalink'].runtimeType.toString());
+      print(result['date_created'].runtimeType);
+      print(result['date_created_gmt'].runtimeType);
+      print(result['date_modified'].runtimeType);
+      print(result['date_modified_gmt'].runtimeType);
+      print(result['type'].runtimeType);
+      print(result['status'].runtimeType);
+      print(result['featured'].runtimeType);
+      print(result['catalog_visibility'].runtimeType);
+      print('des ${result['description'].runtimeType}');
+      print('dessss${result['short_description'].runtimeType}');
+      print(result['sku'].runtimeType);
+      print(result['price'].runtimeType);
+      print(result['id'].runtimeType);
 
-      value = List<ProductDetailModel>.from(
-          result.map((e) => ProductDetailModel.fromJson(e)));
+      value = ProductDetailModel.fromJson(result);
+      print(value.id);
+
       print('done parse');
-      return value[0];
+      return value;
     } on DioException catch (e) {
       print(e);
       throw Exception(e);
@@ -123,36 +124,13 @@ class _ProductService implements ProductService {
             data: _data,
           )
           .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-      print('formating');
       List<ProductModel>? value;
       var result = _result.data! as List<dynamic>;
-
-      print(result);
-
-      print('parse');
-      print('name' + result[0]['name'].runtimeType.toString());
-      print(result[0]['slug'].runtimeType);
-      print('perma' + result[0]['permalink'].runtimeType.toString());
-      print(result[0]['date_created'].runtimeType);
-      print(result[0]['date_created_gmt'].runtimeType);
-      print(result[0]['date_modified'].runtimeType);
-      print(result[0]['date_modified_gmt'].runtimeType);
-      print(result[0]['type'].runtimeType);
-      print(result[0]['status'].runtimeType);
-      print(result[0]['featured'].runtimeType);
-      print(result[0]['catalog_visibility'].runtimeType);
-      print('des ${result[0]['description'].runtimeType}');
-      print('dessss${result[0]['short_description'].runtimeType}');
-      print(result[0]['sku'].runtimeType);
-      print(result[0]['price'].runtimeType);
-      print(result[0]['id'].runtimeType);
-
       value =
           List<ProductModel>.from(result.map((e) => ProductModel.fromJson(e)));
-      print('done parse');
+
       return ProductResponse.fromJson(value);
     } on DioException catch (e) {
-      print(e);
       throw Exception(e);
     }
 

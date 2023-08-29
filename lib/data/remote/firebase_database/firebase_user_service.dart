@@ -31,7 +31,7 @@ class FirebaseUserServiceImpl implements FirebaseUserService {
         'consumer_key': 'ck_b224bb54e462bfa5adb9f220fe7af19cdf3355ba',
         'consumer_secret': 'cs_95eeec6d48257b3cd5d085c376228d1d5f9bf4eb',
         'email': userName,
-        'password': passWord
+        'password': passWord.isEmpty ? '123456' : passWord
       };
 
       final response = await http.post(

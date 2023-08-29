@@ -79,38 +79,38 @@ abstract class AllProdcutCategories {
       categoryName: AppStrings.mensTShirts,
       categoryId: MenCategory.shirts,
     ),
-    Category(
-      categoryName: AppStrings.mensSuitsAndTailoring,
-      categoryId: MenCategory.suitsAndTailoring,
-    ),
-    Category(
-      categoryName: AppStrings.womenDresses,
-      categoryId: WomenCategory.dresses,
-    ),
-    Category(
-      categoryName: AppStrings.womenJeans,
-      categoryId: WomenCategory.jeans,
-    ),
-    Category(
-      categoryName: AppStrings.menTShritsAndTops,
-      categoryId: MenCategory.tShirtsAndTankTops,
-    ),
-    Category(
-      categoryName: AppStrings.womenTops,
-      categoryId: WomenCategory.tops,
-    ),
-    Category(
-      categoryName: AppStrings.menShorts,
-      categoryId: MenCategory.shorts,
-    ),
-    Category(
-      categoryName: AppStrings.menShoseAndSneakers,
-      categoryId: MenCategory.shoesAndSneakers,
-    ),
-    Category(
-      categoryName: AppStrings.womenShoes,
-      categoryId: WomenCategory.shoes,
-    ),
+    // Category(
+    //   categoryName: AppStrings.mensSuitsAndTailoring,
+    //   categoryId: MenCategory.suitsAndTailoring,
+    // ),
+    // Category(
+    //   categoryName: AppStrings.womenDresses,
+    //   categoryId: WomenCategory.dresses,
+    // ),
+    // Category(
+    //   categoryName: AppStrings.womenJeans,
+    //   categoryId: WomenCategory.jeans,
+    // ),
+    // Category(
+    //   categoryName: AppStrings.menTShritsAndTops,
+    //   categoryId: MenCategory.tShirtsAndTankTops,
+    // ),
+    // Category(
+    //   categoryName: AppStrings.womenTops,
+    //   categoryId: WomenCategory.tops,
+    // ),
+    // Category(
+    //   categoryName: AppStrings.menShorts,
+    //   categoryId: MenCategory.shorts,
+    // ),
+    // Category(
+    //   categoryName: AppStrings.menShoseAndSneakers,
+    //   categoryId: MenCategory.shoesAndSneakers,
+    // ),
+    // Category(
+    //   categoryName: AppStrings.womenShoes,
+    //   categoryId: WomenCategory.shoes,
+    // ),
   ];
 }
 

@@ -31,7 +31,9 @@ class ProductCart extends StatelessWidget {
             child: AspectRatio(
               aspectRatio: 1 / 3,
               child: Image.network(
-                entity.images[0],
+                entity.images.isEmpty
+                    ? "https://i.pinimg.com/1200x/d9/f8/6e/d9f86e705dc104e812c10873dd004ed5.jpg"
+                    : "https://i.pinimg.com/1200x/d9/f8/6e/d9f86e705dc104e812c10873dd004ed5.jpg",
                 fit: BoxFit.fill,
               ),
             ),

@@ -50,6 +50,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               } else if (state is ProductDetailLoaded) {
                 final entity = BlocProvider.of<ProductDetailCubit>(context)
                     .productDetailEntity!;
+
                 return ProductDetailCard(
                   controller: pageController,
                   entity: entity,

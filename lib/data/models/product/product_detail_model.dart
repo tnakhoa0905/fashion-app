@@ -27,7 +27,7 @@ class ProductDetailModel {
   String shortDescription;
   String sku;
   double price;
-  List<dynamic> images;
+  List<Image> images;
 
   ProductDetailModel(
       {required this.id,
@@ -65,8 +65,11 @@ class ProductDetailModel {
         description: json["description"] ?? '',
         shortDescription: json["short_description"] ?? '',
         sku: json["sku"] ?? '',
-        price: json["price"].toString() == "" ? 0 : json["price"] as double,
-        images: List<dynamic>.from(json["images"].map((x) => x)),
+        price: json["price"].toString() == "" ? 10 : json["price"] as double,
+        images: json["images"] == null
+            ? img
+            : List<Image>.from(json["images"]
+                .map((x) => Image.fromJson(x as Map<String, dynamic>))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -86,6 +89,63 @@ class ProductDetailModel {
         "short_description": shortDescription,
         "sku": sku,
         "price": price,
-        "images": List<dynamic>.from(images.map((x) => x)),
+        "images": List<dynamic>.from(images.map((x) => x.toJson())),
       };
 }
+
+class Image {
+  int id;
+  DateTime? dateCreated;
+  DateTime? dateCreatedGmt;
+  DateTime? dateModified;
+  DateTime? dateModifiedGmt;
+  String src;
+  String name;
+  String alt;
+
+  Image({
+    required this.id,
+    this.dateCreated,
+    this.dateCreatedGmt,
+    this.dateModified,
+    this.dateModifiedGmt,
+    required this.src,
+    required this.name,
+    required this.alt,
+  });
+
+  factory Image.fromJson(Map<String, dynamic> json) => Image(
+        id: json["id"],
+        dateCreated: DateTime.parse(json["date_created"]),
+        dateCreatedGmt: DateTime.parse(json["date_created_gmt"]),
+        dateModified: DateTime.parse(json["date_modified"]),
+        dateModifiedGmt: DateTime.parse(json["date_modified_gmt"]),
+        src: json["src"],
+        name: json["name"],
+        alt: json["alt"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "date_created": dateCreated!.toIso8601String(),
+        "date_created_gmt": dateCreatedGmt!.toIso8601String(),
+        "date_modified": dateModified!.toIso8601String(),
+        "date_modified_gmt": dateModifiedGmt!.toIso8601String(),
+        "src": src,
+        "name": name,
+        "alt": alt,
+      };
+}
+
+List<Image> img = [
+  Image(
+      id: 1,
+      dateCreated: DateTime.now(),
+      dateCreatedGmt: DateTime.now(),
+      dateModified: DateTime.now(),
+      dateModifiedGmt: DateTime.now(),
+      src:
+          "https://i.pinimg.com/1200x/d9/f8/6e/d9f86e705dc104e812c10873dd004ed5.jpg",
+      name: "khoa",
+      alt: "hkoa")
+];
