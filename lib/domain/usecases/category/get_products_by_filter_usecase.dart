@@ -13,6 +13,7 @@ class GetProductsByFilterUsecase
   Future<Either<Failure, List<ProductEntity>>> call(
       ProductsFilter parameters) async {
     return await _repository.getProdcutsByCategoryId(
+      parameters.perPage,
       categoryId: parameters.categoryId,
       offset: parameters.offset,
       priceMax: parameters.priceMax,
@@ -23,6 +24,7 @@ class GetProductsByFilterUsecase
 }
 
 class ProductsFilter {
+  int perPage;
   int categoryId;
   int? offset;
   String? sort;
@@ -30,6 +32,7 @@ class ProductsFilter {
   int? priceMax;
 
   ProductsFilter({
+    required this.perPage,
     required this.categoryId,
     this.offset,
     this.sort,

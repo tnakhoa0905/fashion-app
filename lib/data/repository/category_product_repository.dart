@@ -16,7 +16,8 @@ class CategoryProductRepositoryImpl implements CategoryProductRepository {
   final NetworkInfo _networkInfo;
   CategoryProductRepositoryImpl(this._remote, this._networkInfo);
   @override
-  Future<Either<Failure, List<ProductEntity>>> getProdcutsByCategoryId({
+  Future<Either<Failure, List<ProductEntity>>> getProdcutsByCategoryId(
+    int perPage, {
     required int categoryId,
     String? sort,
     int? offset,
@@ -29,6 +30,7 @@ class CategoryProductRepositoryImpl implements CategoryProductRepository {
     }
     try {
       final response = await _remote.getProdcutsByCategoryId(
+        perPage,
         categoryId: categoryId,
         limit: AppConstants.categoryProductsLimit,
         sort: sort,

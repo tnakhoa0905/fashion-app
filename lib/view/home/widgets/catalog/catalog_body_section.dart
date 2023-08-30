@@ -13,12 +13,13 @@ class CatalogBodySection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TabBarView(
-      children: [
-        MenWomenCatalogGirdview(categories: MenCategory.categories),
-        MenWomenCatalogGirdview(categories: WomenCategory.categories),
-      ],
-    );
+    // return TabBarView(
+    //   children: [
+    //     MenWomenCatalogGirdview(categories: MenCategory.categories),
+    //     MenWomenCatalogGirdview(categories: WomenCategory.categories),
+    //   ],
+    // );
+    return MenWomenCatalogGirdview(categories: MenCategory.categories);
   }
 }
 

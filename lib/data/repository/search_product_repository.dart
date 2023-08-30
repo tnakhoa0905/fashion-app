@@ -27,6 +27,7 @@ class SearchProductRepositoryImpl implements SearchProductRepository {
     }
     try {
       final response = await _remote.getProdcutsBySearch(
+        10,
         offset: offset,
         sort: sort,
         priceMax: priceMax,

@@ -1,4 +1,4 @@
-import 'dart:developer';
+// import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:fashion_app/core/utils/constants.dart';
 import 'package:fashion_app/data/models/product/product_detail_model.dart';
@@ -6,7 +6,7 @@ import 'package:fashion_app/data/models/product/product_model.dart';
 import 'package:fashion_app/data/models/product/product_response.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:retrofit/retrofit.dart';
-import 'package:http/http.dart';
+// import 'package:http/http.dart';
 
 part 'product_service.g.dart';
 
@@ -19,5 +19,7 @@ abstract class ProductService {
 
   @GET(AppConstants.productEndPoint)
   Future<ProductResponse> getProdcuts(
-      {@Queries() required Map<String, dynamic> queriesParameters});
+    int perPage, {
+    @Queries() required Map<String, dynamic> queriesParameters,
+  });
 }

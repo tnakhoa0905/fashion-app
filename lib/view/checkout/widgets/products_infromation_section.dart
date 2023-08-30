@@ -60,9 +60,9 @@ class ProductInfromationSection extends StatelessWidget {
 
 Widget _generateProductsInformationList(BuildContext context) {
   print('sai dau ');
-  final products =
+  List<ProductsInformations> products =
       BlocProvider.of<CheckoutCubit>(context).getProductsInformations(context);
-  print(products.length);
+
   // return List.generate(
   //   products.length,
   //   (index) {

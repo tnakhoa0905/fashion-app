@@ -24,7 +24,7 @@ class HomeRepositoryImpl implements HomeRepository {
         // has no internet
         return const Left(ServerFailure(AppStrings.internetConnectionError));
       }
-      final response = await _remote.getProdcutsByCategoryId(
+      final response = await _remote.getProdcutsByCategoryId(10,
           categoryId: categoryId,
           limit: AppConstants.homeProductsLimit,
           offset: offset);

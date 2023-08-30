@@ -65,7 +65,9 @@ class ProductDetailModel {
         description: json["description"] ?? '',
         shortDescription: json["short_description"] ?? '',
         sku: json["sku"] ?? '',
-        price: json["price"].toString() == "" ? 10 : json["price"] as double,
+        price: json["price"].toString() == ""
+            ? 10
+            : double.parse(json["price"].toString()),
         images: json["images"] == null
             ? img
             : List<Image>.from(json["images"]
@@ -115,7 +117,7 @@ class Image {
   });
 
   factory Image.fromJson(Map<String, dynamic> json) => Image(
-        id: json["id"],
+        id: json["id"] as int,
         dateCreated: DateTime.parse(json["date_created"]),
         dateCreatedGmt: DateTime.parse(json["date_created_gmt"]),
         dateModified: DateTime.parse(json["date_modified"]),

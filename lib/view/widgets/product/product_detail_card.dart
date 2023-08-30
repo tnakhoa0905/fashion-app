@@ -4,7 +4,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import 'package:fashion_app/config/routes/route_context.dart';
 import 'package:fashion_app/core/extensions/media_query_extension.dart';
-import 'package:fashion_app/core/extensions/theme_extension.dart';
+// import 'package:fashion_app/core/extensions/theme_extension.dart';
 import 'package:fashion_app/core/utils/utils.dart';
 import 'package:fashion_app/core/utils/values.dart';
 import 'package:fashion_app/domain/entities/product/product_detail_entity.dart';

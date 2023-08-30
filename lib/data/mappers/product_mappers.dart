@@ -15,13 +15,16 @@ extension ProdcutModelExtensions on ProductModel {
       productCode: 0,
       url: 'permalink',
       imageUrl: fixImagePath(),
-      additionalImageUrls: <String>[],
+      additionalImageUrls: const <String>[],
     );
   }
 
   String fixImagePath() {
     if (images != null) {
-      return 'https://${'i.pinimg.com/1200x/d9/f8/6e/d9f86e705dc104e812c10873dd004ed5.jpg'}';
+      // return 'https://${'i.pinimg.com/1200x/d9/f8/6e/d9f86e705dc104e812c10873dd004ed5.jpg'}';
+      return images.isEmpty
+          ? 'https://${'i.pinimg.com/1200x/d9/f8/6e/d9f86e705dc104e812c10873dd004ed5.jpg'}'
+          : images[0].src.toString();
     } else {
       return "";
     }
@@ -53,7 +56,7 @@ extension ProductDetailModelExtension on ProductDetailModel {
 
   List<String> fixImagesPath() {
     if (images != null) {
-      return images.map((e) => '${e.src.toString()}').toList();
+      return images.map((e) => e.src.toString()).toList();
     } else {
       return <String>[];
     }

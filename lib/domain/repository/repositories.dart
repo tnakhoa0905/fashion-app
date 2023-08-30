@@ -37,7 +37,8 @@ abstract class ProductDetailRepository {
 }
 
 abstract class CategoryProductRepository {
-  Future<Either<Failure, List<ProductEntity>>> getProdcutsByCategoryId({
+  Future<Either<Failure, List<ProductEntity>>> getProdcutsByCategoryId(
+    int perPage, {
     required int categoryId,
     String? sort,
     int? priceMin,

@@ -39,6 +39,23 @@ class DeliveryAddressSection extends StatelessWidget {
               address: BlocProvider.of<CheckoutCubit>(context)
                   .getSavedAddress(context),
             );
+            // if (state is AddressLoading) {
+            //   return loadingCircularWidget();
+            // } else if (BlocProvider.of<AddressCubit>(context)
+            //     .addressList
+            //     .isEmpty) {
+            //   return const EmptyState(
+            //     icon: Icons.location_city,
+            //     message: AppStrings.notFoundAddress,
+            //   );
+            // } else if (state is AddressLoaded) {
+            //   return AddressListview(
+            //     address: AddressCubit.getCubit(context).addressList,
+            //   );
+            // }
+            // return DeliveryAddressCard(
+            //     address: BlocProvider.of<CheckoutCubit>(context)
+            //         .getSavedAddress(context));
           },
         ),
       ],

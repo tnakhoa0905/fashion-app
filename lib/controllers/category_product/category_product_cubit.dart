@@ -19,6 +19,7 @@ class CategoryProductCubit extends Cubit<CategoryProductState> {
   int offset = 0;
   bool isLoadMore = false;
   List<ProductEntity> productsList = [];
+  int _perPage = 10;
 
   void start(BuildContext context, int categoryID) {
     getProducts(context, categoryID, isFirstFetch: true); //first fetch products
@@ -30,7 +31,7 @@ class CategoryProductCubit extends Cubit<CategoryProductState> {
 
   Future<void> getProducts(BuildContext context, int categoryId,
       {required bool isFirstFetch}) async {
-    final filter = initFilter(context, categoryId);
+    final filter = initFilter(context, categoryId, _perPage);
     if (isFirstFetch) {
       emit(CategoryProductLoading());
     }
@@ -39,6 +40,7 @@ class CategoryProductCubit extends Cubit<CategoryProductState> {
         emit(CategoryProductFailure(failure.message));
       },
       (products) {
+        productsList.clear();
         productsList.addAll(products);
         isLoadMore = false;
         emit(CategoryProductLoaded());
@@ -54,6 +56,7 @@ class CategoryProductCubit extends Cubit<CategoryProductState> {
       isLoadMore = true;
       _load();
       offset++;
+      _perPage += 5;
       await getProducts(context, categoryID, isFirstFetch: false);
     }
   }
@@ -62,9 +65,10 @@ class CategoryProductCubit extends Cubit<CategoryProductState> {
     emit(CategoryProductLoaded());
   }
 
-  ProductsFilter initFilter(BuildContext context, int categoryID) {
+  ProductsFilter initFilter(BuildContext context, int categoryID, int perPage) {
     final filterCubit = BlocProvider.of<FilterCubit>(context);
     return ProductsFilter(
+      perPage: perPage,
       categoryId: categoryID,
       priceMax: filterCubit.priceEnd.toInt(),
       priceMin: filterCubit.priceStart.toInt(),

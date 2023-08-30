@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fashion_app/core/utils/utils.dart';
@@ -15,23 +14,23 @@ class CatalogAppbar extends StatelessWidget implements PreferredSizeWidget {
       title: const TextUtils(text: AppStrings.catalog),
       centerTitle: true,
       leading: const MenuIconWidget(),
-      bottom: TabBar(
-        dividerColor: AppColor.orange,
-        indicatorColor: AppColor.orange,
-        labelColor: AppColor.orange,
-        unselectedLabelColor: AppColor.gray,
-        indicatorPadding:
-            const EdgeInsets.symmetric(horizontal: AppPadding.p20),
-        indicatorWeight: 4.0,
-        tabs: [
-          Tab(
-            text: AppStrings.mens.tr(),
-          ),
-          Tab(
-            text: AppStrings.womens.tr(),
-          ),
-        ],
-      ),
+      // bottom: TabBar(
+      //   dividerColor: AppColor.orange,
+      //   indicatorColor: AppColor.orange,
+      //   labelColor: AppColor.orange,
+      //   unselectedLabelColor: AppColor.gray,
+      //   indicatorPadding:
+      //       const EdgeInsets.symmetric(horizontal: AppPadding.p20),
+      //   indicatorWeight: 4.0,
+      //   tabs: [
+      //     Tab(
+      //       text: AppStrings.mens.tr(),
+      //     ),
+      //     // Tab(
+      //     //   text: AppStrings.womens.tr(),
+      //     // ),
+      //   ],
+      // ),
     );
   }
 

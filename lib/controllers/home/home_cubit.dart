@@ -19,8 +19,8 @@ class HomeCubit extends Cubit<HomeState> {
 
   int offset = 0;
 
-  List<ProductEntity> menTshrits = [];
-  List<ProductEntity> menSutis = [];
+  List<ProductEntity> art = [];
+  List<ProductEntity> gift = [];
   List<ProductEntity> womenDressess = [];
   List<ProductEntity> womenJeans = [];
   List<ProductEntity> menShorts = [];
@@ -36,8 +36,8 @@ class HomeCubit extends Cubit<HomeState> {
   getHomeProdcuts() async {
     emit(HomeProductLoading());
     try {
-      await _getProductByCategory(MenCategory.shirts);
-      // await _getProductByCategory(MenCategory.suitsAndTailoring);
+      await _getProductByCategory(MenCategory.art);
+      await _getProductByCategory(MenCategory.gift);
       // await _getProductByCategory(WomenCategory.dresses);
       // await _getProductByCategory(WomenCategory.jeans);
       // await _getProductByCategory(WomenCategory.tops);
@@ -57,10 +57,10 @@ class HomeCubit extends Cubit<HomeState> {
 
   List<ProductEntity> prodcutsList(int categoryId) {
     switch (categoryId) {
-      case MenCategory.shirts:
-        return menTshrits;
-      // case MenCategory.suitsAndTailoring:
-      //   return menSutis;
+      case MenCategory.art:
+        return art;
+      case MenCategory.gift:
+        return gift;
       // case WomenCategory.dresses:
       //   return womenDressess;
       // case WomenCategory.jeans:
@@ -90,35 +90,35 @@ class HomeCubit extends Cubit<HomeState> {
       },
       (products) {
         switch (categoryID) {
-          case MenCategory.shirts:
-            menTshrits = products;
+          case MenCategory.art:
+            art = products;
             break;
-          case MenCategory.suitsAndTailoring:
-            menSutis = products;
+          case MenCategory.gift:
+            gift = products;
             break;
-          case WomenCategory.dresses:
-            womenDressess = products;
-            break;
-          case WomenCategory.jeans:
-            womenJeans = products;
-            break;
-          case MenCategory.shorts:
-            menShorts = products;
-            break;
-          case MenCategory.shoesAndSneakers:
-            menShoesAndSneakers = products;
-            break;
-          case MenCategory.tShirtsAndTankTops:
-            tShirtsAndTankTops = products;
-            break;
-          case WomenCategory.shoes:
-            womenShoes = products;
-            break;
-          case WomenCategory.tops:
-            womenTops = products;
-            break;
+          // case WomenCategory.dresses:
+          //   womenDressess = products;
+          //   break;
+          // case WomenCategory.jeans:
+          //   womenJeans = products;
+          //   break;
+          // case MenCategory.shorts:
+          //   menShorts = products;
+          //   break;
+          // case MenCategory.shoesAndSneakers:
+          //   menShoesAndSneakers = products;
+          //   break;
+          // case MenCategory.tShirtsAndTankTops:
+          //   tShirtsAndTankTops = products;
+          //   break;
+          // case WomenCategory.shoes:
+          //   womenShoes = products;
+          //   break;
+          // case WomenCategory.tops:
+          //   womenTops = products;
+          //   break;
           default:
-            menTshrits = products;
+            art = products;
         }
       },
     );

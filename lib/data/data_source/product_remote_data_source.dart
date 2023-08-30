@@ -5,7 +5,7 @@ import 'package:fashion_app/data/remote/product/product_service.dart';
 abstract class ProductRemoteDataSource {
   Future<ProductDetailModel> getProdcutDetail({required int productId});
 
-  Future<ProductResponse> getProdcutsByCategoryId(
+  Future<ProductResponse> getProdcutsByCategoryId(int perPage,
       {required int categoryId,
       int? limit,
       String? sort,
@@ -13,7 +13,7 @@ abstract class ProductRemoteDataSource {
       int? priceMax,
       int? offset});
 
-  Future<ProductResponse> getProdcutsBySearch(
+  Future<ProductResponse> getProdcutsBySearch(int perPage,
       {required String? q,
       int? limit,
       String? sort,
@@ -32,7 +32,8 @@ class ProductRemoteDataSourceImpl implements ProductRemoteDataSource {
   }
 
   @override
-  Future<ProductResponse> getProdcutsByCategoryId({
+  Future<ProductResponse> getProdcutsByCategoryId(
+    int perPage, {
     required int categoryId,
     int? limit,
     String? sort,
@@ -60,13 +61,13 @@ class ProductRemoteDataSourceImpl implements ProductRemoteDataSource {
     if (q != null) {
       queriesParameters['q'] = q;
     }
-    return await _productService.getProdcuts(
-      queriesParameters: queriesParameters,
-    );
+    return await _productService.getProdcuts(perPage,
+        queriesParameters: queriesParameters);
   }
 
   @override
-  Future<ProductResponse> getProdcutsBySearch({
+  Future<ProductResponse> getProdcutsBySearch(
+    int perPage, {
     required String? q,
     int? limit,
     String? sort,
@@ -92,6 +93,7 @@ class ProductRemoteDataSourceImpl implements ProductRemoteDataSource {
     }
 
     return await _productService.getProdcuts(
+      perPage,
       queriesParameters: queriesParameters,
     );
   }

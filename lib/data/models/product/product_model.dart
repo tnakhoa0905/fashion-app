@@ -63,7 +63,9 @@ class ProductModel {
         description: json["description"] ?? '',
         shortDescription: json["short_description"] ?? '',
         sku: json["sku"] ?? '',
-        price: json["price"].toString() == "" ? 10 : json["price"] as double,
+        price: json["price"].toString() == ""
+            ? 10
+            : double.parse(json["price"].toString()),
         images: json["images"] == null
             ? img
             : List<Image>.from(json["images"]

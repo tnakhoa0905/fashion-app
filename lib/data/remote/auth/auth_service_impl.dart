@@ -2,12 +2,12 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
 import 'package:crypto/crypto.dart';
-import 'package:fashion_app/core/errors/exceptions.dart';
-import 'package:fashion_app/core/utils/strings.dart';
+// import 'package:fashion_app/core/errors/exceptions.dart';
+// import 'package:fashion_app/core/utils/strings.dart';
 import 'package:fashion_app/data/remote/auth/auth_service.dart';
 import 'package:flutter_appauth/flutter_appauth.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+// import 'package:google_sign_in/google_sign_in.dart';
 // import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 

@@ -1,4 +1,6 @@
 import 'package:equatable/equatable.dart';
+// import 'package:fashion_app/config/services/prefs.dart';
+// import 'package:fashion_app/config/services/service_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -23,7 +25,6 @@ class UserCubit extends Cubit<UserState> {
   final UpdateUserProfileUsecase _updateusecase;
   final DeleteUserProfileUsecase _deleteUsecase;
   final SaveUserProfileUsecase _saveUsecase;
-
   UserApi? _user;
 
   UserApi? get user {

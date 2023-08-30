@@ -12,7 +12,7 @@ import 'package:fashion_app/controllers/user/user_cubit.dart';
 import 'package:fashion_app/core/functions/function.dart';
 import 'package:fashion_app/core/utils/strings.dart';
 import 'package:fashion_app/domain/entities/account/address.dart' as ad;
-import 'package:fashion_app/domain/entities/account/user.dart';
+
 import 'package:fashion_app/domain/entities/payment/payment_entity.dart';
 import 'package:fashion_app/domain/usecases/payment/create_payment_intent_usecase.dart';
 import 'package:fashion_app/view/widgets/common/custom_alert_dialog.dart';

@@ -55,9 +55,9 @@ abstract class AppStrings {
   static const womens = 'womens';
   static const catalog = 'catalog';
   //change name t-shirt
-  static const tShirts = 'Product';
-  static const mensTShirts = 'mens_t_shirts';
-  static const mensSuitsAndTailoring = 'mens_suits_tailoring';
+  static const tShirts = 'Arts, Crafts and Sewing';
+  static const mensTShirts = 'Arts, Crafts and Sewing';
+  static const mensSuitsAndTailoring = 'Gift Wrapping Supplies';
   static const menTShritsAndTops = 'men_t_shrits_tops';
   static const menShorts = 'men_shorts';
   static const menShoseAndSneakers = 'men_shoes_sneakers';
@@ -69,7 +69,7 @@ abstract class AppStrings {
   //men fashions strings
   static const shirts = 'shirts';
   static const shorts = 'shorts';
-  static const suitsAndTailoring = 'suits_tailoring';
+  static const suitsAndTailoring = 'Gift Wrapping Supplies';
   static const tShirtsAndTankTops = 't_shirts_tank_tops';
   static const shoesAndSneakers = 'men_shoes_sneakers';
 

@@ -6,7 +6,7 @@ import 'package:fashion_app/core/utils/constants.dart';
 import 'package:fashion_app/domain/entities/account/user.dart';
 import 'package:fashion_app/domain/entities/account/user_api.dart';
 import 'package:http/http.dart' as http;
-import 'package:supabase_flutter/supabase_flutter.dart';
+// import 'package:supabase_flutter/supabase_flutter.dart';
 
 abstract class FirebaseUserService {
   Future<void> createUserProfile(

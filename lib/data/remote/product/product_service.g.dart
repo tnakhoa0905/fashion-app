@@ -45,7 +45,7 @@ class _ProductService implements ProductService {
     try {
       print('getProduct ProductService');
       const _extra = <String, dynamic>{};
-      final queryParameters = {
+      final queryParameterFunc = {
         'consumer_key': dotenv.env['CONSUMER_KEY'],
         'consumer_secret': dotenv.env['CONSUMER_SECRET'],
       };
@@ -60,54 +60,32 @@ class _ProductService implements ProductService {
           .compose(
             _dio.options,
             '/wc/v3/products/$id',
-            queryParameters: queryParameters,
+            queryParameters: queryParameterFunc,
             data: _data,
           )
           .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-      print('formating');
       ProductDetailModel value;
       var result = _result.data!;
 
-      print(result);
-
-      print('parse');
-      print('name' + result['name'].runtimeType.toString());
-      print(result['slug'].runtimeType);
-      print('perma' + result['permalink'].runtimeType.toString());
-      print(result['date_created'].runtimeType);
-      print(result['date_created_gmt'].runtimeType);
-      print(result['date_modified'].runtimeType);
-      print(result['date_modified_gmt'].runtimeType);
-      print(result['type'].runtimeType);
-      print(result['status'].runtimeType);
-      print(result['featured'].runtimeType);
-      print(result['catalog_visibility'].runtimeType);
-      print('des ${result['description'].runtimeType}');
-      print('dessss${result['short_description'].runtimeType}');
-      print(result['sku'].runtimeType);
-      print(result['price'].runtimeType);
-      print(result['id'].runtimeType);
-
       value = ProductDetailModel.fromJson(result);
-      print(value.id);
-
-      print('done parse');
       return value;
     } on DioException catch (e) {
-      print(e);
       throw Exception(e);
     }
   }
 
   @override
-  Future<ProductResponse> getProdcuts(
+  Future<ProductResponse> getProdcuts(int perPage,
       {required Map<String, dynamic> queriesParameters}) async {
+    print(queriesParameters['categoryId']);
     try {
       print('getProduct ProductService');
       const _extra = <String, dynamic>{};
-      final queryParameters = {
+      final queryParameterFunc = {
         'consumer_key': dotenv.env['CONSUMER_KEY'],
         'consumer_secret': dotenv.env['CONSUMER_SECRET'],
+        'per_page': perPage,
+        'category': queriesParameters['categoryId']
       };
       // queryParameters.addAll(queriesParameters);
       final _headers = <String, dynamic>{};
@@ -120,14 +98,27 @@ class _ProductService implements ProductService {
           .compose(
             _dio.options,
             '/wc/v3/products',
-            queryParameters: queryParameters,
+            queryParameters: queryParameterFunc,
             data: _data,
           )
           .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
       List<ProductModel>? value;
       var result = _result.data! as List<dynamic>;
-      value =
-          List<ProductModel>.from(result.map((e) => ProductModel.fromJson(e)));
+      value = List<ProductModel>.from(result.map((e) {
+        print('***********du lieu json************');
+        print(e['id'].runtimeType);
+        print(e['images'].runtimeType);
+        print(e['price'].runtimeType);
+        print('***********parse***************');
+        final result = ProductModel.fromJson(e);
+        if (result.images.isNotEmpty) {
+          print(result.images[0].id.runtimeType);
+          print(result.id.runtimeType);
+          print(result.price.runtimeType);
+        }
+
+        return ProductModel.fromJson(e);
+      }));
 
       return ProductResponse.fromJson(value);
     } on DioException catch (e) {
