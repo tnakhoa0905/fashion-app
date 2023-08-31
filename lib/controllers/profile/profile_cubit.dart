@@ -39,7 +39,7 @@ class ProfileCubit extends Cubit<ProfileState> {
   start(BuildContext context) {
     final cubit = BlocProvider.of<UserCubit>(context);
     if (cubit.user != null) {
-      username.text = cubit.user!.username;
+      username.text = cubit.user!.firstName;
       email.text = cubit.user!.email;
       phone.text = cubit.user?.shipping.phone ?? "";
       location.text = cubit.user?.billing.address1 ?? "";

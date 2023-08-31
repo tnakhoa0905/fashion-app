@@ -64,6 +64,8 @@ class BillingInformationCard extends StatelessWidget {
   }
 
   Row _textWithPrice(String title, double price) {
+    final result = price.toStringAsFixed(2);
+    print(result);
     return Row(
       children: [
         TextUtils(
@@ -72,7 +74,7 @@ class BillingInformationCard extends StatelessWidget {
           color: AppColor.gray,
         ),
         const Spacer(),
-        TextUtils(text: '\$$price', fontSize: 16),
+        TextUtils(text: '\$$result', fontSize: 16),
       ],
     );
   }

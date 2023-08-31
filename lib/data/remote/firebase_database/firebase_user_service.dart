@@ -96,9 +96,23 @@ class FirebaseUserServiceImpl implements FirebaseUserService {
           Uri.https(
               'martsimple.com', '/wp-json/wc/v3/customers/${user.id}', param),
           headers: {
-            'Content-Type': 'text/plain',
+            'Content-Type': 'application/json',
           },
-          body: jsonEncode(userApiToJson(user)));
+          body: jsonEncode({
+            "first_name": user.firstName,
+            "billing": {
+              "first_name": user.firstName,
+              "postcode": user.shipping.postcode,
+              "address_1": user.shipping.address1,
+              "phone": user.shipping.phone
+            },
+            "shipping": {
+              "first_name": user.firstName,
+              "postcode": user.shipping.postcode,
+              "address_1": user.shipping.address1,
+              "phone": user.shipping.phone
+            }
+          }));
 
       if (response.statusCode == 200) {
         print('update Success');

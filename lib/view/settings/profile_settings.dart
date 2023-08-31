@@ -46,6 +46,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
                     controller: cubit.username,
                   ),
                   CustomInputField(
+                    readOnly: true,
                     icon: AssetsIconPath.email,
                     hint: AppStrings.email,
                     controller: cubit.email,
@@ -73,6 +74,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
                     label: AppStrings.update,
                     press: () async {
                       await cubit.updateUserProfile(context);
+                      setState(() {});
                     },
                   ),
                 ],

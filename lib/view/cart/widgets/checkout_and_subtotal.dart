@@ -32,7 +32,7 @@ class CheckoutAndSubtotal extends StatelessWidget {
                     builder: (context, state) {
                       return TextUtils(
                           text:
-                              '\$${BlocProvider.of<CartCubit>(context).subTotal()}',
+                              '\$${BlocProvider.of<CartCubit>(context).subTotal().toStringAsFixed(2)}',
                           fontSize: 18,
                           fontWe: FontWe.medium);
                     },

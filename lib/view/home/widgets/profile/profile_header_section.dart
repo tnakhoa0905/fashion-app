@@ -29,7 +29,7 @@ class ProfileHeaderSection extends StatelessWidget {
               ),
               const SizedBox(height: AppSizes.s10),
               TextUtils(
-                text: BlocProvider.of<UserCubit>(context).user!.username,
+                text: BlocProvider.of<UserCubit>(context).user!.firstName,
                 fontWe: FontWe.medium,
                 tr: false,
               ),

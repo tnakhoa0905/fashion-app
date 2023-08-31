@@ -47,7 +47,7 @@ class PersonalInformationSection extends StatelessWidget {
                     children: [
                       _rowText(
                         label: AppStrings.name,
-                        value: cubit.user!.username,
+                        value: cubit.user!.firstName,
                       ),
                       _rowText(
                         label: AppStrings.email,

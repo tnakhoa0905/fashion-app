@@ -95,18 +95,18 @@ class UserCubit extends Cubit<UserState> {
       String? zipcode}) async {
     if (_user != null) {
       final newUser = _user!.copyWith(
-          id: 101,
-          username: username,
+          id: _user!.id,
+          firstName: username,
           email: email,
           avatarUrl: profilePhoto,
           shipping: Ing(
-              firstName: '',
+              firstName: username!,
               lastName: 'lastName',
               company: 'company',
-              address1: 'address1',
+              address1: location!,
               address2: 'address2',
               city: 'city',
-              postcode: 'postcode',
+              postcode: zipcode!,
               country: 'country',
               state: 'state',
               phone: phone));

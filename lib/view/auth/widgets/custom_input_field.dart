@@ -9,14 +9,14 @@ import 'package:flutter_svg/svg.dart';
 enum FieldType { text, email, password }
 
 class CustomInputField extends StatefulWidget {
-  const CustomInputField({
-    super.key,
-    this.icon,
-    required this.hint,
-    required this.filedType,
-    this.controller,
-  });
-
+  const CustomInputField(
+      {super.key,
+      this.icon,
+      required this.hint,
+      required this.filedType,
+      this.controller,
+      this.readOnly = false});
+  final bool? readOnly;
   final String? icon;
   final String hint;
   final FieldType filedType;
@@ -49,6 +49,7 @@ class _CustomInputFieldState extends State<CustomInputField> {
             ),
           Expanded(
             child: TextFormField(
+              readOnly: widget.readOnly!,
               style: TextStyle(color: Theme.of(context).primaryColor),
               obscureText:
                   widget.filedType == FieldType.password ? obsecure : false,
