@@ -56,7 +56,11 @@ class CategoryProductCubit extends Cubit<CategoryProductState> {
       isLoadMore = true;
       _load();
       offset++;
-      _perPage += 5;
+      if (_perPage > 100) {
+        print('qua nhieu roif');
+      } else {
+        _perPage += 5;
+      }
       await getProducts(context, categoryID, isFirstFetch: false);
     }
   }

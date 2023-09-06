@@ -40,6 +40,7 @@ class UserCubit extends Cubit<UserState> {
     if (userName == null) {
       return;
     }
+    print('user cubit');
     print(userName);
     (await _getUsecase.call(userName)).fold(
       (failure) {
@@ -56,17 +57,17 @@ class UserCubit extends Cubit<UserState> {
   // create
   Future<void> createUserprofile(
       UserModel entity, String userName, String passWord) async {
-    print('show in UserCubit');
+    print('show in UserCubit' * 3);
     print(entity);
     (await _saveUsecase.call(SaveUserInputs(entity, userName, passWord))).fold(
       (failure) {
         // showToastMessage(failure.message);
-        print('faild');
+        print('faild in user cubit!!!!' * 3);
         print(failure.message);
         emit(UserFailure());
       },
       (r) {
-        print('created');
+        print('created in user cubit!!!' * 3);
         emit(UserCreated());
       },
     );

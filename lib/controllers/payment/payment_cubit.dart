@@ -1,6 +1,12 @@
 import 'dart:developer';
 
 import 'package:equatable/equatable.dart';
+import 'package:fashion_app/config/services/prefs.dart';
+import 'package:fashion_app/config/services/service_locator.dart';
+import 'package:fashion_app/controllers/cart/cart_cubit.dart';
+import 'package:fashion_app/data/data_source/user_remote_data_source.dart';
+import 'package:fashion_app/data/remote/firebase_database/firebase_user_service.dart';
+import 'package:fashion_app/data/remote/oder/order_service.dart';
 import 'package:fashion_app/domain/entities/account/user_api.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -26,6 +32,7 @@ class PaymentCubit extends Cubit<PaymentState> {
   PaymentEntity? paymentEntity;
   BillingDetails? _billingDetails;
   final CreatePaymentIntentUsecase _intentUsecase;
+  final _prefs = getIt<AppPrefs>();
   ad.AddressEntity? _addressEntity;
   Future<void> makePayment(
     BuildContext context,
@@ -66,7 +73,16 @@ class PaymentCubit extends Cubit<PaymentState> {
     try {
       // to display payment sheet
       await Stripe.instance.presentPaymentSheet();
-
+      try {
+        print('create order in paymen');
+        var list = BlocProvider.of<CartCubit>(context).carts;
+        UserApi? userApi =
+            await FirebaseUserServiceImpl().getUserProfileById(_prefs.userUid!);
+        print(userApi);
+        OrderServiceImpl().createOrder(userApi!, list);
+      } catch (error) {
+        log(error.toString());
+      }
       // ignore: use_build_context_synchronously
       goToPaymentSuccessfully(context);
     } on Exception catch (e) {

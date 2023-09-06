@@ -50,7 +50,6 @@ class CartCubit extends Cubit<CartState> {
       count = carts[entity]!;
       emit(IncreaseCount());
     }
-
     return count;
   }
 

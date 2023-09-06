@@ -2,9 +2,9 @@ import 'package:fashion_app/core/utils/strings.dart';
 
 abstract class MenCategory {
   static const art = 325;
-  static const shorts = 5231;
+  // static const shorts = 5231;
   static const gift = 703;
-  static const tShirtsAndTankTops = 5232;
+  static const accessories = 1095;
   static const shoesAndSneakers = 1935;
 
   static final List<Category> categories = [
@@ -19,12 +19,11 @@ abstract class MenCategory {
       image:
           'https://monkeymedia.vcdn.com.vn/upload/web/storage_web/06-11-2022_11:22:01_qua-20-11.jpg',
     ),
-    // Category(
-    //   categoryName: AppStrings.tShirtsAndTankTops,
-    //   categoryId: tShirtsAndTankTops,
-    //   image:
-    //       'https://images.asos-media.com/products/le-breve-tank-top-in-white/204130089-1-white',
-    // ),
+    Category(
+      categoryName: AppStrings.tShirtsAndTankTops,
+      categoryId: accessories,
+      image: 'https://cdn-amz.woka.io/images/I/81dM2i6HihL.jpg',
+    ),
     // Category(
     //   categoryName: AppStrings.shorts,
     //   categoryId: shorts,
@@ -91,10 +90,10 @@ abstract class AllProdcutCategories {
     //   categoryName: AppStrings.womenJeans,
     //   categoryId: WomenCategory.jeans,
     // ),
-    // Category(
-    //   categoryName: AppStrings.menTShritsAndTops,
-    //   categoryId: MenCategory.tShirtsAndTankTops,
-    // ),
+    Category(
+      categoryName: AppStrings.menTShritsAndTops,
+      categoryId: MenCategory.accessories,
+    ),
     // Category(
     //   categoryName: AppStrings.womenTops,
     //   categoryId: WomenCategory.tops,
