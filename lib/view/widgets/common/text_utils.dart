@@ -41,7 +41,7 @@ class TextUtils extends StatelessWidget {
         fontFamily: tr ? _getFontFamily(context) : AppConstants.fontFamilyEn,
       ),
       textAlign: textAlign,
-      maxLines: maxlines ?? 3,
+      maxLines: maxlines ?? 1,
       overflow: TextOverflow.ellipsis,
       softWrap: softWrap ?? true,
     );

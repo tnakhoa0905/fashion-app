@@ -1,4 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:fashion_app/controllers/order/order_cubit.dart';
+import 'package:fashion_app/data/remote/oder/order_service.dart';
 import 'package:fashion_app/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -41,6 +43,7 @@ void main() async {
             BlocProvider(create: (context) => getIt<ThemeCubit>()),
             BlocProvider(create: (context) => getIt<AppCubit>()),
             BlocProvider(create: (context) => CartCubit()),
+            BlocProvider(create: (context) => OrderCubit(OrderServiceImpl())),
             BlocProvider(
                 create: (context) => getIt<UserCubit>()
                   ..getUserProfileById(getIt<AppPrefs>().userUid)),

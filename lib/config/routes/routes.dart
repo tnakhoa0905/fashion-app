@@ -1,3 +1,6 @@
+import 'package:fashion_app/controllers/order/order_cubit.dart';
+import 'package:fashion_app/data/remote/oder/order_service.dart';
+import 'package:fashion_app/view/history_order/history_order_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:page_transition/page_transition.dart';
@@ -28,6 +31,7 @@ abstract class Routes {
   static const privacyPolicy = '/privacy_policy';
   static const rating = '/rating';
   static const faq = '/faq_';
+  static const order = '/order';
 }
 
 class AppRouter {
@@ -67,6 +71,9 @@ class AppRouter {
         return screen(_faq());
       case Routes.rating:
         return screen(_rating());
+      case Routes.order:
+        return screen(order());
+
       default:
         return unKnowunScreen();
     }
@@ -76,6 +83,13 @@ class AppRouter {
     return BlocProvider(
       create: (context) => SplashCubit(),
       child: const SplashScreen(),
+    );
+  }
+
+  static order() {
+    return BlocProvider(
+      create: (context) => OrderCubit(OrderServiceImpl())..getAllOrder(),
+      child: const HistoryOrderScreen(),
     );
   }
 

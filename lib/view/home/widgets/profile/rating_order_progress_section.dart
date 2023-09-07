@@ -1,3 +1,5 @@
+import 'package:fashion_app/config/routes/route_context.dart';
+import 'package:fashion_app/config/routes/routes.dart';
 import 'package:fashion_app/core/extensions/media_query_extension.dart';
 import 'package:fashion_app/core/utils/utils.dart';
 import 'package:fashion_app/core/utils/values.dart';
@@ -13,20 +15,25 @@ class RatingOrderProgressSection extends StatelessWidget {
     return Container(
       height: context.setHeight(0.22),
       padding: const EdgeInsets.symmetric(horizontal: AppPadding.p15),
-      child: const Row(
+      child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          RatingOrderProgressCard(
-            icon: AssetsIconPath.bag,
-            label: AppStrings.progressOrder,
-            value: '10+',
+          InkWell(
+            onTap: () {
+              context.goToNamed(route: Routes.order);
+            },
+            child: const RatingOrderProgressCard(
+              icon: AssetsIconPath.bag,
+              label: AppStrings.progressOrder,
+              value: '10+',
+            ),
           ),
-          RatingOrderProgressCard(
+          const RatingOrderProgressCard(
             icon: AssetsIconPath.ticket,
             label: AppStrings.promocodes,
             value: '5',
           ),
-          RatingOrderProgressCard(
+          const RatingOrderProgressCard(
             icon: AssetsIconPath.star,
             label: AppStrings.reviewes,
             value: '4.5K',
