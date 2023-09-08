@@ -29,7 +29,7 @@ class AddressCubit extends Cubit<AddressState> {
   final FirebaseAddressRepository _repository;
 
   int currentAddressType = 0;
-  List<AddressEntity> addressList = [];
+  List<AddressEntity> addressList;
 
   static AddressCubit getCubit(BuildContext context) =>
       BlocProvider.of<AddressCubit>(context);
