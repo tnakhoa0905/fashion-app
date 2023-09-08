@@ -15,7 +15,8 @@ class HistoryOrderListView extends StatelessWidget {
   Widget build(BuildContext context) {
     final listOrder = BlocProvider.of<OrderCubit>(context).listOrder;
     // TODO: implement build
-    return SizedBox(
+    return Container(
+      margin: const EdgeInsets.only(top: 10),
       height: context.setHeight(1),
       child: ListView.builder(
         shrinkWrap: true,
@@ -33,73 +34,169 @@ class HistoryOrderListView extends StatelessWidget {
               );
             },
             child: Padding(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: AppPadding.p20, vertical: AppPadding.p5),
-              child: Column(
-                children: [
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // Container(
-                      //   width: 80,
-                      //   height: 100,
-                      //   decoration: BoxDecoration(
-                      //     color: AppColor.white2,
-                      //     borderRadius: BorderRadius.circular(15),
-                      //   ),
-                      //   child: AspectRatio(
-                      //     aspectRatio: 1 / 3,
-                      //     child: Image.network(
-                      //       "https://i.pinimg.com/1200x/d9/f8/6e/d9f86e705dc104e812c10873dd004ed5.jpg",
-                      //       fit: BoxFit.fill,
-                      //     ),
-                      //   ),
-                      // ),
-                      const SizedBox(width: 15),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                TextUtils(
-                                  text:
-                                      'Order in ${DateFormat('yyyy-MM-dd – kk:mm').format(listOrder[index].dateCreated!)}',
-                                  fontSize: 14,
-                                  maxlines: 2,
-                                  color: Theme.of(context).primaryColorLight,
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 10),
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                SizedBox(
-                                  width: context.setWidth(0.8),
-                                  child: TextUtils(
-                                    text: 'Price: ${listOrder[index].total}',
+              padding: const EdgeInsets.only(bottom: 10),
+              child: Container(
+                color: Colors.white,
+                child: Column(
+                  children: [
+                    const SizedBox(width: 15),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(width: 15),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  TextUtils(
+                                    text:
+                                        'Order in ${DateFormat('yyyy-MM-dd').format(listOrder[index].dateCreated!)}',
                                     fontSize: 16,
+                                    maxlines: 2,
                                     fontWe: FontWe.medium,
                                   ),
-                                ),
-                                const Spacer(),
-                              ],
-                            ),
-                          ],
+                                  const Spacer(),
+                                  TextUtils(
+                                    text:
+                                        '${listOrder[index].status!.toUpperCase()}',
+                                    fontSize: 12,
+                                    maxlines: 2,
+                                    color: Colors.green,
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 10),
+                              listOrder[index].lineItems!.isNotEmpty
+                                  ? ListView.builder(
+                                      scrollDirection: Axis.vertical,
+                                      shrinkWrap: true,
+                                      physics: NeverScrollableScrollPhysics(),
+                                      itemCount:
+                                          listOrder[index].lineItems!.length,
+                                      itemBuilder: (context, idx) {
+                                        return Column(
+                                          children: [
+                                            Row(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                SizedBox(
+                                                  width: 40,
+                                                  height: 40,
+                                                  child: Image.network(
+                                                    listOrder[index]
+                                                                .lineItems![idx]
+                                                                .image!
+                                                                .src ==
+                                                            ""
+                                                        ? "https://i.pinimg.com/1200x/d9/f8/6e/d9f86e705dc104e812c10873dd004ed5.jpg"
+                                                        : listOrder[index]
+                                                            .lineItems![idx]
+                                                            .image!
+                                                            .src!,
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                ),
+                                                const SizedBox(
+                                                  width: 10,
+                                                ),
+                                                Expanded(
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      TextUtils(
+                                                        text:
+                                                            '${listOrder[index].lineItems![idx].name}',
+                                                        fontSize: 12,
+                                                        maxlines: 1,
+                                                        color: Theme.of(context)
+                                                            .primaryColorLight,
+                                                      ),
+                                                      const SizedBox(
+                                                        height: 8,
+                                                      ),
+                                                      Row(
+                                                        children: [
+                                                          TextUtils(
+                                                            text: listOrder[index]
+                                                                        .lineItems![
+                                                                            idx]
+                                                                        .price ==
+                                                                    ""
+                                                                ? "10"
+                                                                : '${listOrder[index].lineItems![idx].price}',
+                                                            fontSize: 12,
+                                                            maxlines: 1,
+                                                            color: Theme.of(
+                                                                    context)
+                                                                .primaryColorLight,
+                                                          ),
+                                                          TextUtils(
+                                                            text: 'x',
+                                                            fontSize: 12,
+                                                            maxlines: 1,
+                                                            color: Theme.of(
+                                                                    context)
+                                                                .primaryColorLight,
+                                                          ),
+                                                          TextUtils(
+                                                            text:
+                                                                '${listOrder[index].lineItems![idx].quantity}',
+                                                            fontSize: 12,
+                                                            maxlines: 1,
+                                                            color: Theme.of(
+                                                                    context)
+                                                                .primaryColorLight,
+                                                          ),
+                                                        ],
+                                                      )
+                                                    ],
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            const Divider(
+                                              height: 2,
+                                            ),
+                                            const SizedBox(
+                                              height: 8,
+                                            )
+                                          ],
+                                        );
+                                      })
+                                  : Container(),
+                              const SizedBox(height: 10),
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  SizedBox(
+                                    width: context.setWidth(0.8),
+                                    child: TextUtils(
+                                      text: 'Price: ${listOrder[index].total}',
+                                      fontSize: 16,
+                                      fontWe: FontWe.medium,
+                                    ),
+                                  ),
+                                  const Spacer(),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 4,
-                  ),
-                  const Divider(
-                    height: 2,
-                  )
-                ],
+                        const SizedBox(width: 15),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 4,
+                    ),
+                  ],
+                ),
               ),
             ),
           );

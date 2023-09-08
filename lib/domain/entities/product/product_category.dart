@@ -22,20 +22,25 @@ abstract class MenCategory {
     Category(
       categoryName: AppStrings.tShirtsAndTankTops,
       categoryId: accessories,
-      image: 'https://cdn-amz.woka.io/images/I/81dM2i6HihL.jpg',
+      image:
+          'https://www.pennypincherfashion.com/wp-content/uploads/2019/07/Chic-Neutral-Accessories.jpg',
     ),
-    // Category(
-    //   categoryName: AppStrings.shorts,
-    //   categoryId: shorts,
-    //   image:
-    //       'https://images.asos-media.com/products/le-breve-denim-cargo-shorts-in-mid-blue/204130192-1-blue',
-    // ),
-    // Category(
-    //   categoryName: AppStrings.shoesAndSneakers,
-    //   categoryId: shoesAndSneakers,
-    //   image:
-    //       'https://images.asos-media.com/products/ben-sherman-boat-shoes-in-sand/204117658-1-sand',
-    // ),
+    Category(
+      categoryName: "Action Figures",
+      categoryId: 1053,
+      image: 'https://m.media-amazon.com/images/I/81dF42OL0lL.jpg',
+    ),
+    Category(
+      categoryName: "Adhesive Removers",
+      categoryId: 563,
+      image:
+          'https://cdn11.bigcommerce.com/s-wlyjb00m0m/images/stencil/1280x1280/products/115/563/1232_Front__58766.1621004149.jpg?c=2',
+    ),
+    Category(
+      categoryName: "Adhesive Sheets",
+      categoryId: 1267,
+      image: 'https://cdn-amz.woka.io/images/I/71CAntIzBZL.jpg',
+    ),
   ];
 }
 

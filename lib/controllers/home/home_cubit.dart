@@ -21,7 +21,7 @@ class HomeCubit extends Cubit<HomeState> {
 
   List<ProductEntity> art = [];
   List<ProductEntity> gift = [];
-  List<ProductEntity> womenDressess = [];
+  List<ProductEntity> accessories = [];
   List<ProductEntity> womenJeans = [];
   List<ProductEntity> menShorts = [];
   List<ProductEntity> menShoesAndSneakers = [];
@@ -38,7 +38,7 @@ class HomeCubit extends Cubit<HomeState> {
     try {
       await _getProductByCategory(MenCategory.art);
       await _getProductByCategory(MenCategory.gift);
-      // await _getProductByCategory(WomenCategory.dresses);
+      await _getProductByCategory(MenCategory.accessories);
       // await _getProductByCategory(WomenCategory.jeans);
       // await _getProductByCategory(WomenCategory.tops);
       // await _getProductByCategory(WomenCategory.shoes);
@@ -61,8 +61,8 @@ class HomeCubit extends Cubit<HomeState> {
         return art;
       case MenCategory.gift:
         return gift;
-      // case WomenCategory.dresses:
-      //   return womenDressess;
+      case MenCategory.accessories:
+        return accessories;
       // case WomenCategory.jeans:
       //   return womenJeans;
       // case MenCategory.shorts:
@@ -96,9 +96,9 @@ class HomeCubit extends Cubit<HomeState> {
           case MenCategory.gift:
             gift = products;
             break;
-          // case WomenCategory.dresses:
-          //   womenDressess = products;
-          //   break;
+          case MenCategory.accessories:
+            accessories = products;
+            break;
           // case WomenCategory.jeans:
           //   womenJeans = products;
           //   break;

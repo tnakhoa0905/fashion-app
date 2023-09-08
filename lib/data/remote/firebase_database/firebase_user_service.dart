@@ -36,12 +36,13 @@ class FirebaseUserServiceImpl implements FirebaseUserService {
 
       final response = await http.post(
           Uri.https('martsimple.com', '/wp-json/wc/v3/customers', param),
-          headers: {'Content-Type': 'text/plain'},
+          headers: {'Content-Type': 'application/json'},
           body: jsonEncode({
             "email": userName,
             "first_name": user.username,
             "last_name": user.username,
             "username": user.username,
+            "billing": {"email": userName}
           }));
       print('sigup with API');
       print(response.body);

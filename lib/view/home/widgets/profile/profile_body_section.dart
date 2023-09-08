@@ -17,9 +17,9 @@ class ProfileBodySection extends StatelessWidget {
         children: [
           ProfileHeaderSection(),
           SizedBox(height: AppSizes.s20),
-          RatingOrderProgressSection(),
-          SizedBox(height: AppSizes.s20),
           PersonalInformationSection(),
+          SizedBox(height: AppSizes.s20),
+          RatingOrderProgressSection(),
         ],
       ),
     );

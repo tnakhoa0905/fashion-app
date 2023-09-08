@@ -10,6 +10,7 @@ class HistoryOrderDetailBodySection extends StatelessWidget {
   final OrderModel orderModel;
   @override
   Widget build(BuildContext context) {
+    print(orderModel.id);
     if (orderModel.lineItems!.isEmpty) {
       return Center(child: Text('empty'));
     }
@@ -18,6 +19,9 @@ class HistoryOrderDetailBodySection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         //price
+        const SizedBox(
+          height: 12,
+        ),
         SizedBox(
           width: context.setWidth(0.8),
           child: Padding(
@@ -30,6 +34,7 @@ class HistoryOrderDetailBodySection extends StatelessWidget {
             ),
           ),
         ),
+
         //List product
 
         SizedBox(
@@ -49,7 +54,7 @@ class HistoryOrderDetailBodySection extends StatelessWidget {
                       children: [
                         Container(
                           width: 80,
-                          height: 100,
+                          height: 80,
                           decoration: BoxDecoration(
                             color: AppColor.white2,
                             borderRadius: BorderRadius.circular(15),
@@ -73,15 +78,21 @@ class HistoryOrderDetailBodySection extends StatelessWidget {
                               Row(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  TextUtils(
-                                    text: 'Order in ',
-                                    fontSize: 14,
-                                    maxlines: 2,
-                                    color: Theme.of(context).primaryColorLight,
+                                  Expanded(
+                                    child: TextUtils(
+                                      text:
+                                          '${orderModel.lineItems![index].name}',
+                                      fontSize: 14,
+                                      maxlines: 1,
+                                      color:
+                                          Theme.of(context).primaryColorLight,
+                                    ),
                                   ),
                                 ],
                               ),
-                              const SizedBox(height: 10),
+                              const SizedBox(
+                                height: 40,
+                              ),
                               Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
@@ -89,7 +100,7 @@ class HistoryOrderDetailBodySection extends StatelessWidget {
                                     width: context.setWidth(0.4),
                                     child: TextUtils(
                                       text:
-                                          'Price: ${orderModel.lineItems![index].price} x ${orderModel.lineItems![index].quantity}',
+                                          '${orderModel.lineItems![index].price} x ${orderModel.lineItems![index].quantity}',
                                       fontSize: 16,
                                       fontWe: FontWe.medium,
                                     ),

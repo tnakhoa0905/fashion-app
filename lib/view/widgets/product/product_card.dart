@@ -26,8 +26,8 @@ class ProductCard extends StatelessWidget {
         BlocProvider.of<AppCubit>(context).goToProductDetailScreen(context, id);
       },
       child: SizedBox(
-        width: context.setWidth(0.42),
-        height: context.setHeight(0.42),
+        width: context.setWidth(0.44),
+        height: context.setHeight(0.44),
         child: Column(
           children: [
             ClipRRect(
@@ -61,7 +61,7 @@ class ProductCard extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: AppSizes.s5),
+            // const SizedBox(height: AppSizes.s5),
             TextUtils(
               text: label,
               tr: false,

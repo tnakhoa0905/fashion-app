@@ -23,7 +23,7 @@ class ProductCardGirdview extends StatelessWidget {
         controller: controller,
         shrinkWrap: shrinkWrap ?? false,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
+          crossAxisCount: 3,
           crossAxisSpacing: 10,
           mainAxisSpacing: 10,
           childAspectRatio: 0.60,

@@ -48,23 +48,23 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   Future<void> signUp(BuildContext context) async {
-    if (_formVaildate()) {
-      if (!isChecked) {
-        showSnackMessage(context, message: AppStrings.pleaseFillTheCheckbox);
-        return;
-      }
-      _loading();
-      if (_signUpVaildation()) {
-        (await _authUsecases.signUpUsecase.call(_signUpInputs())).fold(
-          (failure) {
-            _failure(context, failure.message);
-          },
-          (user) {
-            _success(context, user);
-          },
-        );
-      }
+    // if (_formVaildate()) {
+    // if (!isChecked) {
+    //   showSnackMessage(context, message: AppStrings.pleaseFillTheCheckbox);
+    //   return;
+    // }
+    _loading();
+    if (_signUpVaildation()) {
+      (await _authUsecases.signUpUsecase.call(_signUpInputs())).fold(
+        (failure) {
+          _failure(context, failure.message);
+        },
+        (user) {
+          _success(context, user);
+        },
+      );
     }
+    // }
   }
 
   Future<void> login(BuildContext context) async {

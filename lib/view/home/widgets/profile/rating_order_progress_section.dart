@@ -75,6 +75,7 @@ class RatingOrderProgressCard extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 8),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
               padding: const EdgeInsets.all(AppPadding.p15),

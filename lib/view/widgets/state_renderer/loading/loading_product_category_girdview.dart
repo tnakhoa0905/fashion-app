@@ -16,7 +16,7 @@ class LoadingProductCategoryGirdview extends StatelessWidget {
       child: GridView.builder(
         shrinkWrap: shrinkWrap,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
+          crossAxisCount: 3,
           crossAxisSpacing: 10,
           mainAxisSpacing: 10,
           childAspectRatio: 0.6,
@@ -28,7 +28,7 @@ class LoadingProductCategoryGirdview extends StatelessWidget {
           top: AppPadding.p20 - 10,
         ),
         scrollDirection: Axis.vertical,
-        itemCount: 10,
+        itemCount: 12,
         itemBuilder: (context, index) {
           return const CustomSkeletonWidget();
         },

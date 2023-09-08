@@ -32,6 +32,11 @@ class ProductInfromationSection extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     TextUtils(
+                      text: "Image",
+                      color: AppColor.gray,
+                      fontSize: 12,
+                    ),
+                    TextUtils(
                       text: AppStrings.productName,
                       color: AppColor.gray,
                       fontSize: 12,
@@ -66,21 +71,32 @@ List<Widget> _generateProductsInformationList(BuildContext context) {
     products.length,
     (index) {
       return _productInfromation(
-        name: products[index].name,
-        count: products[index].count,
-        price: products[index].price,
-      );
+          name: products[index].name,
+          count: products[index].count,
+          price: products[index].price,
+          image: products[index].image);
     },
   );
 }
 
 Padding _productInfromation(
-    {required String name, required int count, required double price}) {
+    {required String name,
+    required int count,
+    required double price,
+    required String image}) {
   return Padding(
     padding: const EdgeInsets.only(top: 5.0),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
+        SizedBox(
+          width: 40,
+          height: 40,
+          child: Image.network(
+            image,
+            fit: BoxFit.cover,
+          ),
+        ),
         SizedBox(
           width: 100,
           child: TextUtils(

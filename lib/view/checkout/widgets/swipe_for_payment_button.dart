@@ -29,6 +29,7 @@ class SwipeForPaymentButton extends StatelessWidget {
           BlocProvider.of<PaymentCubit>(context).makePayment(context);
         },
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
               padding: const EdgeInsets.all(AppPadding.p5),

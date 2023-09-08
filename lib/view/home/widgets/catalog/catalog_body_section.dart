@@ -33,7 +33,7 @@ class MenWomenCatalogGirdview extends StatelessWidget {
       physics: const BouncingScrollPhysics(),
       itemCount: categories.length,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
+        crossAxisCount: 3,
         crossAxisSpacing: 10,
         mainAxisSpacing: 10,
         childAspectRatio: 4 / 6,

@@ -1,5 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'package:fashion_app/config/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -28,7 +29,7 @@ class AddressCubit extends Cubit<AddressState> {
   final FirebaseAddressRepository _repository;
 
   int currentAddressType = 0;
-  List<AddressEntity> addressList;
+  List<AddressEntity> addressList = [];
 
   static AddressCubit getCubit(BuildContext context) =>
       BlocProvider.of<AddressCubit>(context);
@@ -73,7 +74,6 @@ class AddressCubit extends Cubit<AddressState> {
   Future<void> getSavedAddress() async {
     emit(AddressLoading());
     // Get all Address from firebase
-
     (await _repository.getSavedAddress()).fold(
       (failure) {
         emit(AddressFailure(failure.message));
@@ -93,7 +93,8 @@ class AddressCubit extends Cubit<AddressState> {
         emit(AddressFailure(failure.message));
       },
       (r) {
-        addressList.add(address);
+        getSavedAddress();
+        // addressList.add(address);
         emit(AddressLoaded());
       },
     );

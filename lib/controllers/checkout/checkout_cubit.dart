@@ -46,10 +46,12 @@ class CheckoutCubit extends Cubit<CheckoutState> {
     for (var item in carts.entries) {
       products.add(
         ProductsInformations(
-          name: item.key.name,
-          count: item.value,
-          price: item.key.currentPrice * item.value,
-        ),
+            name: item.key.name,
+            count: item.value,
+            price: item.key.currentPrice * item.value,
+            image: item.key.images.isEmpty
+                ? "https://i.pinimg.com/1200x/d9/f8/6e/d9f86e705dc104e812c10873dd004ed5.jpg"
+                : item.key.images[0]),
       );
     }
 
@@ -73,6 +75,10 @@ class ProductsInformations {
   final String name;
   final int count;
   final double price;
+  final String image;
   ProductsInformations(
-      {required this.name, required this.count, required this.price});
+      {required this.name,
+      required this.count,
+      required this.price,
+      required this.image});
 }
